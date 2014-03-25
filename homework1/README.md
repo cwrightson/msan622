@@ -1,9 +1,9 @@
 Homework 1: Basic Charts
 ==============================
 
-| **Name**  | [YOUR NAME]  |
+| **Name**  | Cole Wrightson  |
 |----------:|:-------------|
-| **Email** | [USERNAME]@dons.usfca.edu |
+| **Email** | cwrightson@dons.usfca.edu |
 
 ## Instructions ##
 
