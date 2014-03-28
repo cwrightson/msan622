@@ -7,8 +7,14 @@ Homework 1: Basic Charts
 
 ## Instructions ##
 
-[INSTRUCTIONS: Include instructions on how to run your code. See [`homework0`](../homework0) for an example.]
+The working directory for this code is set to the local directory of he files on my personal computer.  
+The local path must be changed for this code to function properly.
+The packages ggplot2 and reshape2 must be installed as well.
 
 ## Discussion ##
 
-[DISCUSSION: Include a discussion here if required by the assignment.]
+Plot 1: Scatterplot of Movie Budget vs. Movie Rating
+
+![IMAGE](hw1-scatter.png)
+
+This is a test.
