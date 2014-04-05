@@ -1,6 +1,6 @@
 library(ggplot2)
 library(shiny)
-#library(scales)
+library(scales)
 # setwd('C:\\Users\\Cole\\Desktop\\Classwork\\MSAN622_Data_Vis\\HW2')
 data(movies)
 movies$mpaa <- as.character(movies$mpaa)
