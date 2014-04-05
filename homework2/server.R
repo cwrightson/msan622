@@ -28,7 +28,6 @@ million_formatter <- function(x){
 }
 
 capitalize <- function(text) { return(paste(toupper(substring(text, 1, 1)), substring(text, 2), sep = "")) }
-#levels(movies1$mpaa) <- sapply(levels(movies1$mpaa), capitalize)
 
 getPlot <- function(movies1,highlight, genres, colorScheme = 'Default', 
                     dotSize = 5, alphaSize = .6, sortOrder, budget_range, 
@@ -60,31 +59,38 @@ getPlot <- function(movies1,highlight, genres, colorScheme = 'Default',
   movies_plot_first <- movies2[1,]
   movies_plot_last <- movies2[which(movies2$mpaa %in% highlight_a),]
 
-  palette <- c('#d7b5d8', '#df65b0','#dd1c77','#980043')#, 'black', 'black', 'black', 'black', 'black')
+  palette <- c('#d7b5d8', '#df65b0','#dd1c77','#980043')
 
   
   if(titles_on == 'On'){
     p <- ggplot(movies2, aes(x = budget, y = rating, color = mpaa, label=title))
+    if(length(movies2$budget[which(movies2$budget > budget_range[1] &
+                                     movies2$budget < budget_range[2] &
+                                     movies2$rating > rating_range[1] &
+                                     movies2$rating < rating_range[2])]) < 1){
+      p <- p + geom_point(size = dotSize, alpha = alphaSize)
+    }
+    else{
     p <- p + geom_text(position = position_jitter(w = 1000000, h = 0.3),
                        size = dotSize, alpha = alphaSize)
-    
+    }
   }
   else{
-    p <- ggplot(movies2, aes(x = budget, y = rating, color = mpaa))#, label=title))
+    p <- ggplot(movies2, aes(x = budget, y = rating, color = mpaa))
     p <- p + geom_point(size = dotSize, alpha = alphaSize)
   }
   p <- p + ggtitle("Movie Budget vs. Movie Rating by Genre")
   p <- p + xlab("Budget")
   p <- p + ylab("Rating")
   if(rating_range[1] > 0){
-    p <- p + scale_y_continuous(expand = c(0,1), limit = rating_range)# - c(0,1))
+    p <- p + scale_y_continuous(expand = c(0,1), limit = rating_range)
   }
   else{
     p <- p + scale_y_continuous(expand = c(0,0), limit = rating_range)
   }
   p <- p + scale_x_continuous(label = million_formatter, limit = budget_range)
-  #p <- p + scale_y_continuous(expand = c(0,0), limit = rating_range)#, breaks = seq(2,10,2))
-  p <- p + theme(axis.ticks.x = element_blank())#,
+
+  p <- p + theme(axis.ticks.x = element_blank())
   
   p <- p + labs(color = "MPAA Rating")
   
@@ -137,20 +143,7 @@ shinyServer(function(input, output) {
       }
     }
   )
-#   output$table <- renderTable(
-# {
-#   if(length(input$genres)>0 ){
-#     movies2 <- movies1[which(movies1$genre %in% input$genres),]
-#     
-#   }
-#   else{
-#     movies2 <- movies1
-#   }
-#   return(movies2[sortOrder(), c(1,2,3,4,5,17,25)])
-# },
-# include.rownames = FALSE
-#   )
-     
+
   output$scatterplot <- renderPlot(
 {
   print(getPlot(movies1, input$highlight,input$genres, input$colorScheme, 
