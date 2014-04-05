@@ -60,7 +60,7 @@ getPlot <- function(movies1,highlight, genres, colorScheme = 'Default',
   movies_plot_first <- movies2[1,]
   movies_plot_last <- movies2[which(movies2$mpaa %in% highlight_a),]
 
-  palette <- c('#d7b5d8', '#df65b0','#dd1c77','#980043', 'black', 'black', 'black', 'black', 'black')
+  palette <- c('#d7b5d8', '#df65b0','#dd1c77','#980043')#, 'black', 'black', 'black', 'black', 'black')
 
   
   if(titles_on == 'On'){
@@ -73,11 +73,17 @@ getPlot <- function(movies1,highlight, genres, colorScheme = 'Default',
     p <- ggplot(movies2, aes(x = budget, y = rating, color = mpaa))#, label=title))
     p <- p + geom_point(size = dotSize, alpha = alphaSize)
   }
-  p <- p + ggtitle("Movie Budget vs. Movie Rating")
+  p <- p + ggtitle("Movie Budget vs. Movie Rating by Genre")
   p <- p + xlab("Budget")
   p <- p + ylab("Rating")
+  if(rating_range[1] > 0){
+    p <- p + scale_y_continuous(expand = c(0,1), limit = rating_range)# - c(0,1))
+  }
+  else{
+    p <- p + scale_y_continuous(expand = c(0,0), limit = rating_range)
+  }
   p <- p + scale_x_continuous(label = million_formatter, limit = budget_range)
-  p <- p + scale_y_continuous(expand = c(0,0), limit = rating_range)#, breaks = seq(2,10,2))
+  #p <- p + scale_y_continuous(expand = c(0,0), limit = rating_range)#, breaks = seq(2,10,2))
   p <- p + theme(axis.ticks.x = element_blank())#,
   
   p <- p + labs(color = "MPAA Rating")
@@ -96,14 +102,16 @@ getPlot <- function(movies1,highlight, genres, colorScheme = 'Default',
   p <- p + theme(legend.position = c(0, 0))
   p <- p + theme(legend.background = element_blank())
     
+  
+  if(colorScheme != 'Default'){
+    palette <- brewer_pal(type = "qual", palette = colorScheme)(4)
+  }
 
   if(highlight != 'All'){
     palette[which(!mpaa %in% highlight)] <- "#EEEEEE"
   }
 
-  if(colorScheme != 'Default'){
-    palette <- brewer_pal(type = "qual", palette = colorScheme)(4)
-  }
+  
   palette <- palette[which(mpaa %in% unique(movies2$mpaa))]
   p <- p + scale_color_manual(values = palette, labels = mpaa)
 

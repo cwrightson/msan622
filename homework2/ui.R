@@ -22,18 +22,10 @@ shinyUI(
   # We will create a page with a sidebar for input.
   pageWithSidebar(
     # Add title panel.
-    headerPanel("Movie Genres"),
+    headerPanel("Visualizing the Movies Data Set"),
     
     # Setup sidebar widgets.
-    sidebarPanel(
-
-      # Add true/false checkbox for sorting.
-      radioButtons(
-        "highlight",
-        "MPAA Rating",
-        c("All", "PG", "PG-13", "R", "NC-17")#,
-      ),
-      
+    sidebarPanel(    
       
       checkboxGroupInput(
         "genres",
@@ -41,20 +33,12 @@ shinyUI(
         c("Action", "Animation", "Comedy", "Drama", "Documentary", "Romance", "Short", "Mixed"),
         selected = c("Action", "Animation", "Comedy", "Drama", "Documentary", "Romance", "Short", "Mixed")
       ),
-
-      selectInput(
-        # This will be the variable we access later.
-        "colorScheme",
-        # This will be the control title.
-        "Color Scheme:",
-        # This will be the control choices.
-        choices = c("Default", "Accent", "Set1", "Set2", "Set3", "Dark2", "Pastel1", "Pastel2")
-      ),
-       sliderInput("dotSize", "Dot Size:",  
-                    min = 1, max = 10, value = 5),
       
-      sliderInput("alphaSize", "Opacity:",  
-                  min = 0.1, max = 1.0, value = .6, step= 0.1),
+      radioButtons(
+        "highlight",
+        "MPAA Rating",
+        c("All", "PG", "PG-13", "R", "NC-17")#,
+      ), 
       
       sliderInput("budget_range","Budget Range:",
         min = 0,  max = 200000000, value = c(0, 200000000),
@@ -72,10 +56,25 @@ shinyUI(
         # This will be the control choices.
         choices = c("Off", "On")
       ),
+      
+      sliderInput("alphaSize", "Opacity:",  
+                  min = 0.1, max = 1.0, value = .6, step= 0.1),
+      
+      sliderInput("dotSize", "Dot Size:",  
+                  min = 1, max = 10, value = 5),
+      
+      selectInput(
+        # This will be the variable we access later.
+        "colorScheme",
+        # This will be the control title.
+        "Color Scheme:",
+        # This will be the control choices.
+        choices = c("Default", "Accent", "Set1", "Set2", "Set3", "Dark2", "Pastel1", "Pastel2")
+      ),
 
       width = 2,
       # Add a download link
-      HTML("<p align=\"center\">[ <a href=\"https://github.com/msan622/lectures/tree/master/ShinyDemo/demo1\">download source</a> ]</p>")
+      HTML("<p align=\"center\">[ <a href=\"https://github.com/cwrightson/msan622/tree/master/homework2\">download source</a> ]</p>")
     ),
     
 #     # Setup main panel.
