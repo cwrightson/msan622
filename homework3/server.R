@@ -354,6 +354,7 @@ getScatterplot <- function(dataset, vector){#columns_wanted = c(1:8), colorBy = 
 getParallelcoords <- function(dataset, vector){#columns_wanted = c(1:8), colorBy = 12) {
   columns_wanted = vector[5][[1]]
   vars <- seq(1,12)
+  choices <- gsub("\\.", " ", colnames(state.x77))
   colorBy <- vars[which(choices %in% vector[3][[1]])]
   highlights <- vector[6][[1]]
   
@@ -455,6 +456,7 @@ getParallelcoords <- function(dataset, vector){#columns_wanted = c(1:8), colorBy
 getLegend <- function(dataset, vector){
   columns_wanted = vector[5][[1]]
   vars <- seq(1,12)
+  choices <- gsub("\\.", " ", colnames(state.x77))
   colorBy <- vars[which(choices %in% vector[3][[1]])]
   highlights <- vector[6][[1]]
   
