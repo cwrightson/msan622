@@ -11,7 +11,7 @@ The following visualizations can be created using the code found in this reposit
 
 The data set came from http://basketballvalue.com/downloads.php  
 
-`2011NBA_Finals_play_by_play.py` holds the Python code for turning the raw data into the text data used in visualization.  
+`2011NBA_Finals_play_by_play.ipynb` holds the Python code for turning the raw data into the text data used in visualization.  
 Note that this is an IPython notebook file and requires that IPython be installed on your machine.
 
 `visualize_2011_Finals_play_by_play_data.R` holds the R code for creating the visualizations
