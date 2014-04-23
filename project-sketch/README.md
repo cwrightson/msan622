@@ -47,5 +47,20 @@ The players to plot are determined by the user from the same four categories lis
 Animating the plot to show how player salary and performance change over the years would be the best.  However a similar effect could be achieved by connecting the dots that are plotted for a single player for all of his years in the league.
 The user will also be able to highlight/brush any of the players plotted.
 
+Drawings of Interactive Side Panels:
 
+Map of NBA Player Locations:
 
+![IMAGE](plot1-sidebar.jpeg)
+
+Stacked Area Plot of Location Influence on the NBA:  
+
+![IMAGE](plot2-sidebar.jpeg)
+
+Streamgraph of Top Player Salaries in the NBA over the Years: 
+
+![IMAGE](plot3-sidebar.jpeg)
+
+Bubbleplot of Player Salaries related to Player Quality:
+
+![IMAGE](plot4-sidebar.jpeg)
