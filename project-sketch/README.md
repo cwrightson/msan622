@@ -51,16 +51,16 @@ Drawings of Interactive Side Panels:
 
 Map of NBA Player Locations:
 
-![IMAGE](plot1-sidebar.jpeg)
+![IMAGE](plot1-sidebar.jpg)
 
 Stacked Area Plot of Location Influence on the NBA:  
 
-![IMAGE](plot2-sidebar.jpeg)
+![IMAGE](plot2-sidebar.jpg)
 
 Streamgraph of Top Player Salaries in the NBA over the Years: 
 
-![IMAGE](plot3-sidebar.jpeg)
+![IMAGE](plot3-sidebar.jpg)
 
 Bubbleplot of Player Salaries related to Player Quality:
 
-![IMAGE](plot4-sidebar.jpeg)
+![IMAGE](plot4-sidebar.jpg)
