@@ -188,7 +188,7 @@ getPlot1 <- function(df, series, time_range){ #start = 1969, num = 12) {
     df_melt2,
     aes(x = Time, y = value, 
         group = variable,
-        color = variable))
+        color = variable, size = 3))
   
   p <- p + geom_line()
   
