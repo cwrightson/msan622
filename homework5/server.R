@@ -47,11 +47,13 @@ getPlot2 <- function(df, column = 'Car Drivers Killed Only', time_range = c(1969
   palette[as.numeric(highlight1)-start+1] <- 'red'
   palette[as.numeric(highlight2)-start+1] <- 'orange'
   
-  
+  alphas <- rep
+  alphas[as.numeric(highlight1)-start+1] <- 1.0
+  alphas[as.numeric(highlight2)-start+1] <- 1.0
   
   p <- ggplot(df_melt4, aes(x=Month , y=value, group = Year, color = Year))
   
-  p <- p + geom_line(size = 1)
+  p <- p + geom_line(size = 1, alpha = alphas)
   
   p <- p + scale_x_discrete(
     #limits = range(xmin,xmax),
@@ -116,7 +118,7 @@ plotOverview <- function(df, series, time_range){#start = 1969, num = 12) {
   xmin <- start
   xmax <- end
   
-  ymin <- 0
+  ymin <- -5
   ymax <- max(round_any(df_melt2$value, 100, f = ceiling))
   
   p <- ggplot(df_melt2, aes(x = Time, y = value, group = variable))
@@ -188,9 +190,9 @@ getPlot1 <- function(df, series, time_range){ #start = 1969, num = 12) {
     df_melt2,
     aes(x = Time, y = value, 
         group = variable,
-        color = variable, size = 3))
+        color = variable))
   
-  p <- p + geom_line()
+  p <- p + geom_line(size = 3)
   
 #   minor_breaks <- seq(
 #     floor(xmin), 
