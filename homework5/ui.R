@@ -27,7 +27,7 @@ shinyUI(
   fluidRow(
     column(2,
              conditionalPanel(
-               condition="input.conditionedPanels == 'Injuries and Deaths of Time'",
+               condition="input.conditionedPanels == 'Injuries and Deaths over Time'",
                fluidRow(
                  checkboxGroupInput(
                    "series",

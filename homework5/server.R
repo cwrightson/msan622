@@ -28,8 +28,9 @@ getPlot2 <- function(df, column = 'Car Drivers Killed Only', time_range = c(1969
   end = time_range[2]
   #print(start)
   #print(end)
-  #print(as.numeric(highlight1))
-  #print(as.numeric(highlight2))
+#   alphas <- rep(.6,16)
+#   alphas[as.numeric(highlight1)-start+1] <- 1.0
+#   alphas[as.numeric(highlight2)-start+1] <- 1.0
   
   df_melt3 <- melt(df, id = c("Year", 'Month'))
   #print(df_melt[1,])
@@ -47,13 +48,11 @@ getPlot2 <- function(df, column = 'Car Drivers Killed Only', time_range = c(1969
   palette[as.numeric(highlight1)-start+1] <- 'red'
   palette[as.numeric(highlight2)-start+1] <- 'orange'
   
-  alphas <- rep
-  alphas[as.numeric(highlight1)-start+1] <- 1.0
-  alphas[as.numeric(highlight2)-start+1] <- 1.0
   
-  p <- ggplot(df_melt4, aes(x=Month , y=value, group = Year, color = Year))
   
-  p <- p + geom_line(size = 1, alpha = alphas)
+  p <- ggplot(df_melt4, aes(x=Month , y=value, group = Year, color = Year, alpha = alphas))
+  
+  p <- p + geom_line(size = 1, alpha = 1.0)
   
   p <- p + scale_x_discrete(
     #limits = range(xmin,xmax),
@@ -118,7 +117,7 @@ plotOverview <- function(df, series, time_range){#start = 1969, num = 12) {
   xmin <- start
   xmax <- end
   
-  ymin <- -5
+  ymin <- 0
   ymax <- max(round_any(df_melt2$value, 100, f = ceiling))
   
   p <- ggplot(df_melt2, aes(x = Time, y = value, group = variable))
@@ -192,7 +191,7 @@ getPlot1 <- function(df, series, time_range){ #start = 1969, num = 12) {
         group = variable,
         color = variable))
   
-  p <- p + geom_line(size = 3)
+  p <- p + geom_line(size = 2)
   
 #   minor_breaks <- seq(
 #     floor(xmin), 
@@ -208,7 +207,7 @@ getPlot1 <- function(df, series, time_range){ #start = 1969, num = 12) {
   
   p <- p + scale_y_continuous(
     limits = c(ymin, ymax+300),
-    expand = c(0, 0),
+    expand = c(0.2, 0),
     breaks = seq(0, ymax, round_any((ymax/10),100, f = ceiling)))
   
   p <- p + theme(axis.title = element_blank())
@@ -263,13 +262,13 @@ height = 400)
   output$mainPlot <- renderPlot({
     print(getPlot1(df, input$series, input$time_range1))#input$start, input$num))
   }, 
-  width = 1000,
+  width = 950,
   height = 420)
   
   output$overviewPlot <- renderPlot({
     print(plotOverview(df, input$series, input$time_range1))#input$start, input$num))
   },
-  width = 1000,
+  width = 950,
   height = 100)
   
 })
