@@ -1,14 +1,30 @@
-Homework [#]: [HOMEWORK NAME]
+Homework 5: Time Series Visualization
 ==============================
 
-| **Name**  | [YOUR NAME]  |
+| **Name**  | Cole Wrightson  |
 |----------:|:-------------|
-| **Email** | [USERNAME]@dons.usfca.edu |
+| **Email** | cwrightson@dons.usfca.edu |
 
 ## Instructions ##
 
-[INSTRUCTIONS: Include instructions on how to run your code.]
+The following packages must be installed prior to running this code:
+
+- `ggplot2`
+- `shiny`
+- `GGally`
+- `reshape`
+- `scales`
+- `plyr`
+
+To run this code, please enter the following commands in R:
+
+```
+library(shiny)
+shiny::runGitHub('msan622', 'cwrightson', subdir = "homework5")
+```
+
+This will start the `shiny` app. See below for details on how to interact with the visualization.
 
 ## Discussion ##
 
-[DISCUSSION: Include a discussion here if required by the assignment.]
+TO DO
