@@ -98,7 +98,7 @@ shinyUI(
     #column(10,
       mainPanel(
         tabsetPanel(
-          tabPanel("Injuries and Deaths of Time", 
+          tabPanel("Injuries and Deaths over Time", 
                    plotOutput("mainPlot", 
                               width = "100%", 
                               height = "400px"), 

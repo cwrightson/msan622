@@ -27,4 +27,13 @@ This will start the `shiny` app. See below for details on how to interact with t
 
 ## Discussion ##
 
-TO DO
+The UK Road Casualities data set contains monthly data on deaths and injuries that occurred on UK highways during the years 1969-1984 in addition to a few other statistics about travelling in the UK.
+I choose to focus on the deaths and serious injuries that occurred each month as well as the location of the killed/injured within the car. 
+  
+My shiny application attempts to see how these injuries trend over time, investigate the cyclicale nature of highway death countries and compare the number of injures based on the person's location within the vehicle. 
+
+
+
+![Plot1](Plot1.png)
+
+![Plot2](Plot2.png)

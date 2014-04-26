@@ -21,18 +21,6 @@ names(df) <- c('Car Drivers Killed Only', 'Car Drivers', 'Front-seat Passengers'
                'Law Enacted', 'Month', 'Year', 'Time')
 
 
-
-getplot1 <- function(df){
-  
-  
-  
-  
-  p <- ggplot(df, aes(x=Time , y=DriversKilled))
-  p <- p+geom_line(size = 2)
-  
-  
-  return(p)
-}
 getPlot2 <- function(df, column = 'Car Drivers Killed Only', time_range = c(1969,1984), 
                      highlight1 = 1983, highlight2 = 1982){
   
@@ -71,7 +59,7 @@ getPlot2 <- function(df, column = 'Car Drivers Killed Only', time_range = c(1969
     #breaks = seq(round(xmin), round(xmax)))
   
   p <- p + scale_y_continuous(
-    limits = c(ymin, ymax),
+    limits = c(ymin, ymax+300),
     expand = c(0, 0),
     breaks = seq(0, ymax, round_any((ymax/10),100, f = ceiling)))
   
@@ -79,6 +67,8 @@ getPlot2 <- function(df, column = 'Car Drivers Killed Only', time_range = c(1969
   
   p <- p + theme_minimal()
   p <- p + theme(panel.border = element_blank())
+  p <- p + theme(axis.title = element_blank())
+  
   p <- p + theme(panel.grid = element_line(color = 'grey90', linetype = 3))
   
   p <- p + theme(
@@ -110,8 +100,16 @@ plotOverview <- function(df, series, time_range){#start = 1969, num = 12) {
   
   df_melt <- melt(df, id = "Time")
   #print(df_melt[1,])
+  if(length(series) > 0){
   df_melt2 <- df_melt[which(df_melt$variable %in% series),]
   df_melt2$value <- as.numeric(df_melt2$value)
+  }
+  else{
+    series = c('Car Drivers Killed Only', 'Car Drivers', 'Front-seat Passengers',
+               'Rear-seat Passengers', 'Van Drivers Killed')
+    df_melt2 <- df_melt[which(df_melt$variable %in% series),]
+    df_melt2$value <- as.numeric(df_melt2$value)
+  }
   #num=12
   #start=1969
   
@@ -162,8 +160,16 @@ getPlot1 <- function(df, series, time_range){ #start = 1969, num = 12) {
   end = time_range[2]
   
   df_melt <- melt(df, id = "Time")
-  df_melt2 <- df_melt[which(df_melt$variable %in% series),]
-  df_melt2$value <- as.numeric(df_melt2$value)
+  if(length(series) > 0){
+    df_melt2 <- df_melt[which(df_melt$variable %in% series),]
+    df_melt2$value <- as.numeric(df_melt2$value)
+  }
+  else{
+    series = c('Car Drivers Killed Only', 'Car Drivers', 'Front-seat Passengers',
+               'Rear-seat Passengers', 'Van Drivers Killed')
+    df_melt2 <- df_melt[which(df_melt$variable %in% series),]
+    df_melt2$value <- as.numeric(df_melt2$value)
+  }
   #print(df_melt2[1,])
   xmin <- start
   xmax <- end
@@ -199,7 +205,7 @@ getPlot1 <- function(df, series, time_range){ #start = 1969, num = 12) {
     breaks = seq(round(xmin), round(xmax)))
   
   p <- p + scale_y_continuous(
-    limits = c(ymin, ymax),
+    limits = c(ymin, ymax+300),
     expand = c(0, 0),
     breaks = seq(0, ymax, round_any((ymax/10),100, f = ceiling)))
   
@@ -207,6 +213,7 @@ getPlot1 <- function(df, series, time_range){ #start = 1969, num = 12) {
   
   p <- p + theme_minimal()
   p <- p + theme(panel.border = element_blank())
+  p <- p + theme(axis.title = element_blank())
   
   p <- p + theme(panel.grid = element_line(color = 'grey90', linetype = 3))
   
