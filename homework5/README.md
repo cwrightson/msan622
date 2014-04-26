@@ -35,7 +35,7 @@ My shiny application attempts to see how these injuries trend over time, investi
 My application has two interactive plots that are delimited by tabs.
 The first tab, "Injuries and Deaths over Time", shows a multi-line plot.
 
-![Plot1](Plot1.png
+![Plot1](Plot1.png)
 
 The plot initially displays the five columns of data that are used in the visualization and compares their relative levels over time by plotting them all on the same x/y axis. The user is able to subset the data to plot the columns of data that they are most interested in.  The plot initially shows the entire 16 years for which there data set spans, however, the user can select any of the months as the starting or ending point in the plot. This changes the scale of the x-axis, but the user is able to know where the plot is relative to the whole time series by the small overview plot that is just below the main visual.  Other customization that I did for this visual included, moving the legend and ensuring that the colors of each data time series were consistent no matter when subset of them were chosen to be plotted. I also automatically scale the x and y axes to the size of the data to be plotted and reformat the tick break points accordingly. 
 
