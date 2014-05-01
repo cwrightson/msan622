@@ -218,8 +218,8 @@ shinyServer(function(input, output) {
 {
   print(plot1(all_data, input$map, input$location, input$lat_range, input$long_range))
 }, 
-width = 800,
-height = 500)
+width = 750,
+height = 400)
   
   output$plot2 <- renderPlot({
     print(plot2())

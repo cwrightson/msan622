@@ -1,6 +1,6 @@
 library(shiny)
 
-setwd('C:\\Users\\Cole\\Desktop\\Classwork\\MSAN622_Data_Vis\\Project')
+#setwd('C:\\Users\\Cole\\Desktop\\Classwork\\MSAN622_Data_Vis\\Project')
 
 players = c('None', 'LeBron James', 'Micheal Jordan', 'Dirk Nowitzki',  'Bill Russell')
 locals = c('None', 'Chicago', 'Dallas', 'New York', 'San Francisco' )
@@ -20,7 +20,7 @@ shinyUI(
                  radioButtons(
                    "map",
                    "Map",
-                   c('World', 'United States', 'User Defined')
+                   c('World', 'United States')
                  )),
                fluidRow(
                  radioButtons(
@@ -30,14 +30,11 @@ shinyUI(
                    selected = 'Place of Birth'
                  )),
                fluidRow(
-                 sliderInput("long_range","Latitudes",
-                             min = -180,  max = 180, value = c(-180, 180),
-                             step = 1, format = '000', ticks = TRUE
-                 )),
-               fluidRow(
-                 sliderInput("lat_range","Logitudes",
-                             min = -90,  max = 90, value = c(-60, 85),
-                             step = 1, format = '00', ticks = TRUE
+                 radioButtons(
+                   "current",
+                   "Players to Show",
+                   c('All Players', 'Current Players Only'),
+                   selected = 'All Players'
                  )),
                fluidRow(
                  sliderInput("seasons1","Seasons",
