@@ -583,7 +583,7 @@ p <- p + theme(panel.background = element_blank())
   p <- p + coord_flip()
 formatter <- function(x){
   y <- rep('',length(x))
-  for(i in seq(1,length(x),5)){
+  for(i in seq(1,length(x),length(x)/4)){
     y[i] <- x[i]
   }
   return(y)
@@ -698,7 +698,7 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
  p <- p + ylab("NBA Population")
  #p <- p + theme(axis.title.x = element_text('Season'))
  #p <- p + theme(axis.title.y = element_text('NBA Population'))
- p <- p + theme(axis.ticks.x = element_blank())
+ #p <- p + theme(axis.ticks.x = element_blank())
  p <- p + theme(axis.text.x = element_blank())
  p <- p + theme(axis.ticks.y = element_blank())
  p <- p + theme(axis.text.x = element_blank())
@@ -717,7 +717,7 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
    p <- p + scale_x_discrete(label = formatter)
 formatter <- function(x){
   y <- rep('',length(x))
-  for(i in seq(0,length(x),20)){
+  for(i in seq(0,length(x),length(x)/5)){
     y[i] <- x[i]
   }
   return(y)
