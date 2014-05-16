@@ -144,6 +144,7 @@ data <- read.csv('all_data_best.csv', colClasses = classes)
 
 plot1a <- function(data,line_df, map, lines, locations, seasons1){
   
+  lines = ''
   lower <- as.character(seasons1[1]-1)
   upper <- as.character(seasons1[2])
   

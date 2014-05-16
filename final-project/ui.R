@@ -16,6 +16,7 @@ shinyUI(
       column(2,
              conditionalPanel(
                condition="input.conditionedPanels == 'NBA Player Map'",
+               br(),br(),br(),br(),br(),br(),
                fluidRow(
                  radioButtons(
                    "map_a",
@@ -62,6 +63,7 @@ shinyUI(
 #                    c('Show Migration', 'Hide Migration'),
 #                    selected = 'Hide Migration'
 #                 )),
+              br(),br(),br(),br(),br(),br(),
               fluidRow(
                 radioButtons(
                   "map_b",

@@ -40,6 +40,7 @@ Geocoding was processed via a combination of the geopy package for Python to cal
 ## Techniques ##
 
 ###NBA Player Map###
+
 The most important visualization of the quartet is the map which plots the location of all 4217 players during various known points in their lifetime. For many of the players it is known in what city they were born, the city in which they attend high school, the college they went to if any, and the location of all of the NBA, ABA, and BAA teams they played for. For this graphic, individual municipalities were mapped as points using their latitude and logitude.  This points were plotted of the stock `{maps}` shapefiles for the world and for the United States.  The color of the point is encoded to the time period during which the player was in a location; 'Place of Birth', 'High School', 'College', 'NBA'.  The points were sized based on the number of players that were from the location represented by the point at a given time period.  Therefore, a given municipality may has as many as four points if all of the locations are plotted at once. 
 
 The data density for this plot is fairly high as all of the plot is showing information.  On a map, even the locations that do not have points is information as it lets us know that no player has come from that location.  The density of the data itself is also import because it conveys the relative density where NBA player were or are. 
@@ -53,6 +54,9 @@ The trends in this data are pretty clear.  Most NBA players are American and mor
 This visualization is all about density, comparision and their evolution of time. 
 
 ###Basketball Hotbeds###
+
+The scond visualization is effectively a the same information as the map but in bar chart format so that the user can easily compare the sizes of the largest populations for various cross-sections of the data. Here the number of players that are from a particular location is represented by the length of the corresponding bar. The locations are no longer locationed spatially but ordered vertically from largest to smallest.  The data can again be subset by place of birth, high school, and college as well as which seasons since 1946 should count toward the tabulations. The biggest idfference in information provided by the bar chart over the map is that the spatial information is now encoded by a geographic category that allows the user to select between city level, state level, country level or continental level. 
+
 
 
 ###NBA Geographics over Time###
