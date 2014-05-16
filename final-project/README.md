@@ -87,6 +87,9 @@ This discussion should be approximately 2 to 5 paragraphs for each visualization
 
 ## Interactivity ##
 
+The interactivity for the four visualizations is somewhat standardized to limit the conplexity and to link the multiple plots between one another. Because much of the data is based around location and some form of time the interactivity deals with the same topics.  On the map, the user can select whether they want to visualize the whole world or focus on just the United States where most of the NBA population is based. 
+
+
 Please include an "Interactivity" section where you discuss the interactivity implemented in your project. Please discuss the following:
 
 - The type(s) of interactivity you implemented
@@ -118,6 +121,3 @@ Another challenge that I have mentioned previously was in regard to maintaining 
 Another challenge is getting the initial map to load quickly.  It takes a long time to load because of the way that the size of the dots is calculated.  Another problem is that it must recalculate the dot size eveytime the years are re-filtered by the user. This would not be a problem if the NBA teams were not plotted as well but because the teams that a single player plays for can not be represented in a single column, the table() function can not be used and a nested for loops are necessary to calculate a total that spans multiple lists. 
 It I had more time I would create a hierachical look up table witht the values for all of the various potential year filterings pre-stored so that the calculation would be instant and the map would render quickly.
 
-
-
-Please include a "Challenges" section where you discuss the challenges you encountered during this project. Describe how you addressed the challenge, or why you did not address the challenge. Please also discuss what you would have liked to implement if you had more time.

@@ -845,8 +845,8 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
   p <- p + theme(panel.grid.major = element_line(color = "grey90"))
   p <- p + theme(panel.grid.minor = element_line(color = "grey90", linetype = 3))
   p <- p + theme(panel.border = element_blank())
-  p <- p + xlab('Total Population'))
-  p <- p + ylab('NBA Population'))
+  p <- p + xlab('Total Population')
+  p <- p + ylab('NBA Population')
   p <- p + theme(axis.ticks.x = element_blank())
   p <- p + theme(axis.ticks.y = element_blank())
   formatter <- function(x){
