@@ -681,7 +681,7 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
   df2_st <- df2_s[1:10,]
   df2_st <- df2_st[which(!is.na(df2_st$Var1)),]
   #print(head(df2_st))
-  best <- c(as.character(df2_st$Var1),'Sum')
+  best <- as.character(df2_st$Var1)
   #print(best)
   
   df <- df[which(df$Var1 %in% best),]
