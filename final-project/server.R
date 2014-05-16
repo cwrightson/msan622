@@ -142,10 +142,81 @@ data <- read.csv('all_data_best.csv', colClasses = classes)
 
 
 
-plot1a <- function(dot_df,line_df, map, lines, locations, get_dot_df, seasons1){
+plot1a <- function(data,line_df, map, lines, locations, seasons1){
+  
+  lower <- as.character(seasons1[1]-1)
+  upper <- as.character(seasons1[2])
+  
+  data <- data[which(data$LastYear > lower),]
+  data <- data[which(data$FirstYear < upper),]
+  
+  t1 <- data.frame(table(data$birthCityState))
+  t2 <- data.frame(table(data$hsCityState))
+  t3 <- data.frame(table(data$CollegeNameGood))
+  t4 = data.frame('Var1' = unique(data$Team1), 'Freq' = rep(0,length(unique(data$Team1))))
+  for(i in 1:length(data$Player)){
+    for(j in 24:39){
+      city <- data[i,j]
+      t4$Freq[which(t4$Var1 == city)] <- t4$Freq[which(t4$Var1 == city)] +1
+    }
+  }
+  
+  dot_b <- t1
+  names(dot_b) <- c('City', 'Num')
+  dot_b['Type'] <- 'Birth'
+  dot_h <- t2
+  names(dot_h) <- c('City', 'Num')
+  dot_h['Type'] <- 'High School'
+  dot_c <- t3
+  names(dot_c) <- c('City', 'Num')
+  dot_c['Type'] <- 'College'
+  dot_n <- t4
+  names(dot_n) <- c('City', 'Num')
+  dot_n['Type'] <- 'NBA'
+  
+  dot_df2 <- rbind(dot_b,dot_h,dot_c,dot_n)
+  
+  lat <- rep(0,length(dot_df2[,1]))
+  long <- rep(0,length(dot_df2[,1]))
+  for(i in 1:length(dot_df2[,1])){
+    if(dot_df2$Type[i] == 'Birth'){
+      lat[i] <- data$BirthLat[which(data$birthCityState == dot_df2$City[i])][1]
+      long[i] <- data$BirthLong[which(data$birthCityState == dot_df2$City[i])][1]
+    }
+    if(dot_df2$Type[i] == 'High School'){
+      lat[i] <- data$HSLat[which(data$hsCityState == dot_df2$City[i])][1]
+      long[i] <- data$HSLong[which(data$hsCityState == dot_df2$City[i])][1]
+    }
+    if(dot_df2$Type[i] == 'College'){
+      lat[i] <- data$CollegeLat[which(data$CollegeNameGood == dot_df2$City[i])][1]
+      long[i] <- data$CollegeLong[which(data$CollegeNameGood == dot_df2$City[i])][1]
+    }
+    if(dot_df2$Type[i] == 'NBA'){
+      lat[i] <- data$Team1_Lat[which(data$Team1 == dot_df2$City[i])][1]
+      long[i] <- data$Team1_Long[which(data$Team1 == dot_df2$City[i])][1]
+    }
+  }
+  dot_df2['Lat'] <- lat
+  dot_df2['Long'] <- long
+  dot_df2$Type <- as.factor(dot_df2$Type)
+  
+  states <- rep('',length(dot_df2$City))
+  for(i in 1:length(dot_df2[,1])){
+    if(dot_df2$Type[i] == 'Birth'){
+      states[i] <- data$BirthState[which(data$birthCityState == as.character(dot_df2$City[i]))][1]
+    }
+    if(dot_df2$Type[i] == 'High School'){
+      states[i] <- data$BirthState[which(data$hsCityState == as.character(dot_df2$City[i]))][1]
+    }
+  }
+  dot_df2['State'] <- states
+  dot_df2 <- dot_df2[which(dot_df2$City != 'none none'),]
+  
+  
   
   print(seasons1)
-  dot_df <- isolate(get_dot_df)
+  dot_df <- dot_df2
+  #dot_df <- isolate(get_dot_df)
   max_num <- max(dot_df$Num)
   #print(dot_df$Num)
   print(max_num)
@@ -770,7 +841,7 @@ shinyServer(function(input, output) {
   output$plot1a <- renderPlot(
 {
   #print(plot1(all_data, input$map), input$location))
-  print(plot1a(dot_df, line_df, input$map_b, input$lines, input$location_b, get_dot_df(), input$seasons1_b))
+  print(plot1a(dot_df, line_df, input$map_b, input$lines, input$location_b, input$seasons1_b))
 }, 
 width = 750,
 height = 400)
@@ -778,7 +849,7 @@ height = 400)
 output$plot1b <- renderPlot(
 {
   #print(plot1(all_data, input$map), input$location))
-  print(plot1a(dot_df, line_df, input$map_b, input$lines, input$location_b, get_dot_df(), input$seasons1_b))
+  print(plot1a(dot_df, line_df, input$map_b, input$lines, input$location_b, input$seasons1_b))
 }, 
 width = 750,
 height = 400)
