@@ -569,9 +569,9 @@ plot2 <- function(dataset, geo, when, us_int, seasons){
   }
   print(palette)
   print(when)
-  p <- ggplot(df_st, aes(x = Var1, y = Freq , fill = Freq))
+  p <- ggplot(df_st, aes(x = Var1, fill = Freq))
   p <- p + geom_bar()
-  p <- p + scale_colour_gradient(low = palette[2], high = palette[1], guide = "none")
+  p <- p + scale_colour_gradient(low = palette[1], high = palette[2], guide = "none")
   p <- p + coord_flip()
   
   return(p)
@@ -673,7 +673,8 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
  p <- ggplot(df, aes(x = Var2, y = Freq, group = Var1, color = Var1))
  p <- p + geom_area()
  
- palette <- c('#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf','#999999', '#000')
+ palette <- c('#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#66c2a4', 
+              '#ffff33','#a65628','#f781bf','#999999', '#000')
  
  p <- p + scale_colour_manual(values = palette)
   #p
@@ -778,7 +779,7 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
       p <- p + geom_text(color = 'black')
     }
   }
-  print(zoom.x)
+  #print(zoom.x)
   #p <- p + scale_x_continuous(limit = zoom.x)
   #p <- p + scale_y_continuous(limit = zoom.y)
   print(sumNBA)
