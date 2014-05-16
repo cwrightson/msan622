@@ -51,7 +51,7 @@ classes <- c(rep('character',7), rep('numeric',4),
 
 data <- read.csv('all_data_best.csv', colClasses = classes)
 
-nbas <- fromJSON(file = 'team_dict.json')
+#nbas <- fromJSON(file = 'team_dict.json')
 # nba_cities <- names(nbas)
 # NBACount <- rep(0,length(nba_cities))
 # for(i in 1:length(nba_cities)){
