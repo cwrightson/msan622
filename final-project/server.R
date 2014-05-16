@@ -560,7 +560,16 @@ plot2 <- function(dataset, geo, when, us_int, seasons){
   
   
   #print(df_st$Var1)
-  p <- ggplot(df_st, aes(x = Var1, y = Freq)) + geom_bar()
+  palette <- c('#e41a1c','#ea4749')
+  if(when == 'College'){
+    palette <- c('#4daf4a','#6ec16b')
+  }
+  if(when == 'High School'){
+    palette <- c('#377eb8','#5697cc')
+  }
+  p <- ggplot(df_st, aes(x = Var1, y = Freq , color = Freq))
+  p <- p + geom_bar()
+  p <- p + scale_colour_gradient(low = palette[2], high = palette[1],guide = "none")
   p <- p + coord_flip()
   
   return(p)
@@ -659,7 +668,12 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
   df <- df[which(df$Var1 %in% best),]
   
   #print(df_st$Var1)
- p <- ggplot(df, aes(x = Var2, y = Freq, group = Var1, color = Var1)) + geom_line()
+ p <- ggplot(df, aes(x = Var2, y = Freq, group = Var1, color = Var1))
+ p <- p + geom_line()
+ 
+ palette <- c('#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf','#999999', '#000')
+ 
+ p <- p + scale_colour_manual(value = palette ,guide = "none")
   #p
   
   
@@ -668,7 +682,13 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
 
 
 
-plot4 <- function(player_data, city_data, state_data, sc, bh, zoom.x, zoom.y){
+plot4 <- function(player_data, city_data, state_data, sc, bh, seasons3){
+  
+  lower <- as.character(seasons[1]-1)
+  upper <- as.character(seasons[2])
+  
+  player_data <- player_data[which(player_data$LastYear > lower),]
+  player_data <- player_data[which(player_data$FirstYear < upper),]
   
   state_pop <- state_data[,c(1,7)]
   
@@ -757,12 +777,19 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, zoom.x, zoom.y){
     }
   }
   print(zoom.x)
-  #p <- p + scale_x_continuous(limit = zoom.x)
-  #p <- p + scale_y_continuous(limit = zoom.y)
+  p <- p + scale_x_continuous(limit = zoom.x)
+  p <- p + scale_y_continuous(limit = zoom.y)
   print(sumNBA)
   print(sumGeneral)
   #p <- p + geom_abline(intercept = 0-zoom.y[1], slope = sumNBA/sumGeneral)
-  #p
+  p <- p + scale_colour_gradient(low = "#2166ac", high = "#b2182b",guide = "none")
+  p <- p + theme(panel.background = element_rect(fill = NA))
+  p <- p + theme(legend.key = element_rect(fill = NA))
+  p <- p + theme(panel.grid.major = element_line(color = "grey90"))
+  p <- p + theme(panel.grid.minor = element_line(color = "grey90", linetype = 3))
+  p <- p + theme(panel.border = element_blank())
+  
+  
   
   return(p)
 }
@@ -886,7 +913,7 @@ width = 950,
 height = 420)
   
   output$plot4 <- renderPlot({
-    print(plot4(data, city_data, state_data, input$sc, input$bh, input$zoom.x, input$zoom.y))
+    print(plot4(data, city_data, state_data, input$sc, input$bh, input$seasons3))
 }, 
 width = 950,
 height = 420)

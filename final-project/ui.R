@@ -136,14 +136,9 @@ shinyUI(
                    selected = 'Place of Birth'
                  )),
                fluidRow(
-                 sliderInput("zoom.x","X-Axis Limits",
-                             min = 0,  max = 40000000, value = c(0, 40000000),
-                             step = 100000, format = '00,000,000', ticks = TRUE
-                 )),
-               fluidRow(
-                 sliderInput("zoom.y","y-Axis Limits",
-                             min = 0,  max = 400, value = c(0, 400),
-                             step = 10, ticks = TRUE
+                 sliderInput("seasons3","Seasons",
+                             min = 1947,  max = 2014, value = c(1947, 2014),
+                             step = 1, format = '0000', ticks = TRUE
                  ))
 #             ),
 #       conditionalPanel(
