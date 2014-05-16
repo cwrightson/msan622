@@ -18,50 +18,75 @@ shinyUI(
                condition="input.conditionedPanels == 'NBA Player Map'",
                fluidRow(
                  radioButtons(
-                   "map",
+                   "map_a",
                    "Map",
                    c('World', 'United States')
                  )),
                fluidRow(
                  checkboxGroupInput(
-                   "location",
+                   "location_a",
                    "Location",
                    c('Birth', 'High School', 'College', 'NBA'),
                    selected = 'Birth'
+#                  )),
+#                fluidRow(
+#                  radioButtons(
+#                    "current",
+#                    "Players to Show",
+#                    c('All Players', 'Current Players Only'),
+#                    selected = 'All Players'
                  )),
                fluidRow(
-                 radioButtons(
-                   "current",
-                   "Players to Show",
-                   c('All Players', 'Current Players Only'),
-                   selected = 'All Players'
-                 )),
-               fluidRow(
-                 sliderInput("seasons1","Seasons",
+                 sliderInput("seasons1_a","Seasons",
                              min = 1947,  max = 2014, value = c(1947, 2014),
                              step = 1, format = '0000', ticks = TRUE
                  )),
-               fluidRow(
-                 selectInput(
-                   "player",
-                   "Highlight Player",
-                   players,
-                   selected = 'None'
-                 )),
-               fluidRow(
-                 selectInput(
-                   "location",
-                   "Highlight Location",
-                   locals,
-                   selected = 'None'
-                 )),
-               fluidRow(
-                 selectInput(
-                   "lines",
-                   "Migration",
-                   c('Show Migration', 'Hide Migration'),
-                   selected = 'Hide Migration'
-                 ))
+#                fluidRow(
+#                  selectInput(
+#                    "player",
+#                    "Highlight Player",
+#                    players,
+#                    selected = 'None'
+#                  )),
+#                fluidRow(
+#                  selectInput(
+#                    "location",
+#                    "Highlight Location",
+#                    locals,
+#                    selected = 'None'
+#                  )),
+#                fluidRow(
+#                  selectInput(
+#                    "lines",
+#                    "Migration",
+#                    c('Show Migration', 'Hide Migration'),
+#                    selected = 'Hide Migration'
+#                 )),
+              fluidRow(
+                radioButtons(
+                  "map_b",
+                  "Map",
+                  c('World', 'United States')
+                )),
+              fluidRow(
+                checkboxGroupInput(
+                  "location_b",
+                  "Location",
+                  c('Birth', 'High School', 'College', 'NBA'),
+                  selected = 'Birth'
+                  #                  )),
+                  #                fluidRow(
+                  #                  radioButtons(
+                  #                    "current",
+                  #                    "Players to Show",
+                  #                    c('All Players', 'Current Players Only'),
+                  #                    selected = 'All Players'
+                )),
+              fluidRow(
+                sliderInput("seasons1_b","Seasons",
+                            min = 1947,  max = 2014, value = c(1947, 2014),
+                            step = 1, format = '0000', ticks = TRUE
+                ))
              ),
              conditionalPanel(
                condition="input.conditionedPanels == 'Basketball Hotbeds' | input.conditionedPanels == 'NBA Demogrphics over Time'",
@@ -153,7 +178,10 @@ shinyUI(
       mainPanel(
         tabsetPanel(
           tabPanel("NBA Player Map", 
-                   plotOutput("plot1", 
+                   plotOutput("plot1a", 
+                              width = "100%", 
+                              height = "600px"),
+                   plotOutput("plot1b", 
                               width = "100%", 
                               height = "600px")),
           tabPanel("Basketball Hotbeds", 

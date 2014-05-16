@@ -767,10 +767,18 @@ shinyServer(function(input, output) {
 # }
 # )
   
-  output$plot1 <- renderPlot(
+  output$plot1a <- renderPlot(
 {
   #print(plot1(all_data, input$map), input$location))
-  print(plot1a(dot_df, line_df, input$map, input$lines, input$location, get_dot_df(), input$seasons1))
+  print(plot1a(dot_df, line_df, input$map_b, input$lines, input$location_b, get_dot_df(), input$seasons1_b))
+}, 
+width = 750,
+height = 400)
+
+output$plot1b <- renderPlot(
+{
+  #print(plot1(all_data, input$map), input$location))
+  print(plot1a(dot_df, line_df, input$map_b, input$lines, input$location_b, get_dot_df(), input$seasons1_b))
 }, 
 width = 750,
 height = 400)
