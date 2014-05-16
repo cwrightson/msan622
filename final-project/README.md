@@ -87,7 +87,10 @@ The data density of the plot is fairly high as the area if the plot itself is us
 The data-to-ink ratio is good as additional annotations are unnecessary outside of a legend that relates color to the group that is being plotted.
 The lie factor here is minimal, especially since it is linked to the other plot. The data density is better than a simple multiline plot although it is relatively hard to interpret. The data-to-ink ratio
 
-From this plot I learned that the rookie class each year is very inconsistent.  While there are clear trends when a single season or more of players is investigated, when looking only at the new players each year is not too useful.  The data is simply too noisy. This visualization also does a good job of showing odd trends in the data collection.  The large spikes correspond to either a large influx of new player into the league, via merger or expansion, or because the records were better kept to historians are now better aware of the players that actually took part in the games.  But on a none serious note, the best thing about this visualizations is that sometimes you get things that are just cool even if the meaning is somewhat obsure...
+From this plot I learned that the rookie class each year is very inconsistent.  While there are clear trends when a single season or more of players is investigated, when looking only at the new players each year is not too useful.  The data is simply too noisy. This visualization also does a good job of showing odd trends in the data collection.  The large spikes correspond to either a large influx of new player into the league, via merger or expansion, or because the records were better kept to historians are now better aware of the players that actually took part in the games.  
+
+
+But on a more serious note, the best thing about this visualizations is that sometimes you get things that are just cool even if the meaning is somewhat obsure...
 ![Image](area2.png)
 
 
