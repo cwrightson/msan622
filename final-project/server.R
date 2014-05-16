@@ -701,9 +701,9 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
   #all_data <- read.csv('C:\\Users\\Cole\\Desktop\\Classwork\\MSAN622_Data_Vis\\Project\\with_continents.csv')
   usa_players <- player_data[which(player_data$BirthCountry == 'United States of America'),]
   
-  m <- merge(rbind(data.frame(table(usa_players$BirthState)),data.frame('Var1' = 'Vermont', 'Freq' = 0)), state_pop, by.x = 'Var1', by.y = 'Name')
+  m <- merge(data.frame(table(usa_players$BirthState)), state_pop, by.x = 'Var1', by.y = 'Name')
   names(m) <- c('State', 'NBATotalBirth', 'StatePop2010')
-  n <- merge(m,rbind(data.frame(table(usa_players$HighSchoolState)),data.frame('Var1' = 'Vermont', 'Freq' = 0)), by.x = 'State', by.y = 'Var1')
+  n <- merge(m,data.frame(table(usa_players$HighSchoolState)), by.x = 'State', by.y = 'Var1')
   names(n)[4] <- 'NBATotalHighSchool'
   n['BirthRatio'] <- n$StatePop2010/n$NBATotalBirth
   n['HighSchoolRatio'] <- n$StatePop2010/n$NBATotalHighSchool
