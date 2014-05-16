@@ -91,7 +91,7 @@ shinyUI(
                 ))
              ),
              conditionalPanel(
-               condition="input.conditionedPanels == 'Basketball Hotbeds' | input.conditionedPanels == 'NBA Demogrphics over Time'",
+               condition="input.conditionedPanels == 'Basketball Hotbeds' | input.conditionedPanels == 'NBA Demographics over Time'",
                fluidRow(
                  selectInput(
                    "geo",
@@ -185,7 +185,7 @@ shinyUI(
                    plotOutput("plot2", 
                               width = "100%", 
                               height = "600px")),
-          tabPanel("NBA Demogrphics over Time", 
+          tabPanel("NBA Demographics over Time", 
                    plotOutput("plot3", 
                               width = "100%", 
                               height = "600px")),
