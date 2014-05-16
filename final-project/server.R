@@ -578,6 +578,7 @@ plot2 <- function(dataset, geo, when, us_int, seasons){
   p <- p + scale_x_discrete(expand = c(0,0))
   p <- p + scale_y_discrete(expand = c(0,0))
   p <- p + theme(panel.grid = element_blank())
+p <- p + theme(panel.background = element_blank())
 
   p <- p + coord_flip()
 formatter <- function(x){
@@ -587,7 +588,7 @@ formatter <- function(x){
   }
   return(y)
 }
-p <- p + scale_x_discrete(label = formatter)
+p <- p + scale_y_discrete(label = formatter)
                           
                           
   return(p)
@@ -705,6 +706,7 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
  p <- p + scale_y_discrete(expand = c(0,0))
  p <- p + theme(axis.text.x = element_text(angle = 90, vjust = .6, hjust = 1))
  p <- p + theme(panel.grid = element_blank())
+ p <- p + theme(panel.background = element_blank())
  formatter <- function(x){
    y <- rep('',length(x))
    for(i in seq(1,length(x),5)){
@@ -713,6 +715,14 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
     return(y)
 }
    p <- p + scale_x_discrete(label = formatter)
+formatter <- function(x){
+  y <- rep('',length(x))
+  for(i in seq(0,length(x),20)){
+    y[i] <- x[i]
+  }
+  return(y)
+}
+p <- p + scale_y_discrete(label = formatter)
   
   
   return(p)
@@ -835,8 +845,8 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
   p <- p + theme(panel.grid.major = element_line(color = "grey90"))
   p <- p + theme(panel.grid.minor = element_line(color = "grey90", linetype = 3))
   p <- p + theme(panel.border = element_blank())
-  p <- p + theme(axis.title.x = element_text('Total Population'))
-  p <- p + theme(axis.title.y = element_text('NBA Population'))
+  p <- p + xlab('Total Population'))
+  p <- p + ylab('NBA Population'))
   p <- p + theme(axis.ticks.x = element_blank())
   p <- p + theme(axis.ticks.y = element_blank())
   formatter <- function(x){

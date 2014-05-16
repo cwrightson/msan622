@@ -97,17 +97,8 @@ For example, interactivity can help provide focus or context, help overcome over
 
 ## Prototype Feedback ##
 
-Please include a "Prototype Feedback" section where you discuss the prototype exercise. Please discuss the following: 
+The prototype feed back was useful, although I wish it had come later in the process.  At that point I only had one visual.  I had a map that was very similar to the one that I presented a couple of days later in class. I did make the changes that were suggested to me, such as color palette changes as well and appropriate interactions. Honestly, there was not too much substantial feedback and there was nothing that I disagreed with. There was some worry that it would be difficult to implement the migration patterns that I envisioned and they were correct. For the most part their feedback confirmed what I had already assumed were the issues or going to be issues, but it is always good to make sure that others are in consensus.
 
-- Describe the original prototype you demonstrated
-
-- The changes did you make based on the feedback
-
-- The feedback that you found particularly helpful, and why
- 
-- The feedback that you did not agree with, and why
-
-This section should range from 1 to 3 paragraphs of text.
 
 ## Challenges ##
 
