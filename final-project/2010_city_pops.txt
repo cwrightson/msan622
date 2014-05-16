@@ -1,0 +1,51 @@
+City	State	2012	2010
+New York	New York	8336697	8175133
+Los Angeles	California	3857799	3792621
+Chicago	Illinois	2714856	2695598
+Houston	Texas	2160821	2100263
+Philadelphia	Pennsylvania	1547607	1526006
+Phoenix	Arizona	1488750	1445632
+San Antonio	Texas	1382951	1327407
+San Diego	California	1338348	1307402
+Dallas	Texas	1241162	1197816
+San Jose	California	982765	945942
+Austin	Texas	842592	790390
+Jacksonville	Florida	836507	821784
+Indianapolis	Indiana	834852	820445
+San Francisco	California	825863	805235
+Columbus	Ohio	809798	787033
+Fort Worth	Texas	777992	741206
+Charlotte	North Carolina	775202	731424
+Detroit	Michigan	701475	713777
+El Paso	Texas	672538	649121
+Memphis	Tennessee	655155	646889
+Boston	Massachusetts	636479	617594
+Seattle	Washington	634535	608660
+Denver	Colorado	634265	600158
+Washington	District of Columbia	632323	601723
+Nashville	Tennessee	624496	601222
+Baltimore	Maryland	621342	620961
+Louisville	Kentucky	605110	597337
+Portland	Oregon	603106	583776
+Oklahoma City	Oklahoma	599199	579999
+Milwaukee	Wisconsin	598916	594833
+Las Vegas	Nevada	596424	583756
+Albuquerque	New Mexico	555417	545852
+Tucson	Arizona	524295	520116
+Fresno	California	505882	494665
+Sacramento	California	475516	466488
+Long Beach	California	467892	462257
+Kansas City	Missouri	464310	459787
+Mesa	Arizona	452084	439041
+Virginia Beach	Virginia	447021	437994
+Atlanta	Georgia	443775	420003
+Colorado Springs	Colorado	431834	416427
+Raleigh	North Carolina	423179	403892
+Omaha	Nebraska	421570	408958
+Miami	Florida	413892	399457
+Oakland	California	400740	390724
+Tulsa	Oklahoma	393987	391906
+Minneapolis	Minnesota	392880	382578
+Cleveland	Ohio	390928	396815
+Wichita	Kansas	385577	382368
+Arlington	Texas	375600	365438
