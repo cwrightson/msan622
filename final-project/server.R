@@ -572,6 +572,9 @@ plot2 <- function(dataset, geo, when, us_int, seasons){
   p <- ggplot(df_st, aes(x = Var1, y = Freq, color = Freq))
   p <- p + geom_bar()
   p <- p + scale_colour_gradient(low = '#525252', high = '#252525', guide = "none")
+  p <- p + theme(axis.ticks.x = element_blank())
+  p <- p + scale_x_discrete(expand = 0))
+  p <- p + scale_y_discrete(expand = 0))
   p <- p + coord_flip()
   
   return(p)
@@ -677,6 +680,12 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
               '#ffff33','#a65628','#f781bf','#999999', '#000000')
  
  p <- p + scale_colour_manual(values = palette)
+ p <- p + theme(axis.title.x = element_text('Season'))
+ p <- p + theme(axis.title.y = element_text('NBA Population'))
+ p <- p + theme(axis.ticks.x = element_blank())
+ p <- p + theme(axis.ticks.y = element_blank())
+ p <- p + scale_x_discrete(expand = 0))
+ p <- p + scale_y_discrete(expand = 0))
   #p
   
   
@@ -731,7 +740,7 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
                           size = 10, 
                           alpha = .6, 
                           label=State, 
-                          color = BirthRatio))
+                          color = log(BirthRatio)))
       p <- p + geom_point()
       p <- p + geom_abline(intercept = 0, slope = sumNBA/sumGeneral)
       p <- p + geom_text(color = 'black')
@@ -745,7 +754,7 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
                           size = 10, 
                           alpha = .6, 
                           label=State, 
-                          color = HighSchoolRatio))
+                          color = log(HighSchoolRatio)))
       p <- p + geom_point()
       p <- p + geom_abline(intercept = 0, slope = sumNBA/sumGeneral)
       p <- p + geom_text(color = 'black')
@@ -764,7 +773,7 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
                           size = 10, 
                           alpha = .6, 
                           label=City, 
-                          color = BirthRatio))
+                          color = log(BirthRatio)))
       p <- p + geom_point()
       p <- p + geom_abline(intercept = 0, slope = sumNBA/sumGeneral)
       p <- p + geom_text(color = 'black')
@@ -780,7 +789,7 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
                           size = 10, 
                           alpha = .6,
                           label=City, 
-                          color = HighSchoolRatio))
+                          color = log(HighSchoolRatio)))
       p <- p + geom_point()
       p <- p + geom_abline(intercept = 0, slope = sumNBA/sumGeneral)
       p <- p + geom_text(color = 'black')
@@ -800,7 +809,10 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
   p <- p + theme(panel.grid.major = element_line(color = "grey90"))
   p <- p + theme(panel.grid.minor = element_line(color = "grey90", linetype = 3))
   p <- p + theme(panel.border = element_blank())
-  
+  p <- p + theme(axis.title.x = element_text('Total Population'))
+  p <- p + theme(axis.title.y = element_text('NBA Population'))
+  p <- p + theme(axis.ticks.x = element_blank())
+  p <- p + theme(axis.ticks.y = element_blank())
   
   
   return(p)
