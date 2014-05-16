@@ -56,13 +56,13 @@ shinyUI(
 #                    locals,
 #                    selected = 'None'
 #                  )),
-               fluidRow(
-                 selectInput(
-                   "lines",
-                   "Migration",
-                   c('Show Migration', 'Hide Migration'),
-                   selected = 'Hide Migration'
-                )),
+#                fluidRow(
+#                  selectInput(
+#                    "lines",
+#                    "Migration",
+#                    c('Show Migration', 'Hide Migration'),
+#                    selected = 'Hide Migration'
+#                 )),
               br(),br(),br(),br(),br(),br(),br(),br(),br(),
               fluidRow(
                 radioButtons(

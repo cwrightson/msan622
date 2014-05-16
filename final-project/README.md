@@ -41,6 +41,14 @@ Geocoding was processed via a combination of the geopy package for Python to cal
 
 ###NBA Player Map###
 
+![Image](map1.png)
+
+
+
+![Image](map2.png)
+
+
+
 The most important visualization of the quartet is the map which plots the location of all 4217 players during various known points in their lifetime. For many of the players it is known in what city they were born, the city in which they attend high school, the college they went to if any, and the location of all of the NBA, ABA, and BAA teams they played for. For this graphic, individual municipalities were mapped as points using their latitude and longitude.  This points were plotted of the stock `{maps}` shape files for the world and for the United States.  The color of the point is encoded to the time period during which the player was in a location; 'Place of Birth', 'High School', 'College', 'NBA'.  The points were sized based on the number of players that were from the location represented by the point at a given time period.  Therefore, a given municipality may have as many as four points if all of the locations are plotted at once. 
 
 The data density for this plot is fairly high as the entire plot is showing information.  On a map, even the locations that do not have points represent information as it lets us know that no player has come from that location.  The density of the data itself is also import because it conveys the relative density where NBA player were or are. 
@@ -55,6 +63,10 @@ This visualization is all about density, comparison and their evolution of time.
 
 ###Basketball Hotbeds###
 
+![Image](bar1.png)
+
+
+
 The second visualization is effectively the same information as the map but in bar chart format so that the user can easily compare the sizes of the largest populations for various cross-sections of the data. Here the number of players that are from a particular location is represented by the length of the corresponding bar. The locations are no longer located spatially but ordered vertically from largest to smallest.  The data can again be subset by place of birth, high school, and college as well as which seasons since 1946 should count toward the tabulations. The biggest difference in information provided by the bar chart over the map is that the spatial information is now encoded by a geographic category that allows the user to select between city level, state level, country level or continental level. The color is simple but used very subtly to emphasis the difference between high and low values.
 
 The data density is fairly low but this allows for very simple comparisons and easy comprehension.
@@ -65,15 +77,27 @@ The bar chart showed me that the US is more dominant demographically in the NBA 
 
 ###NBA Geographies over Time###
 
+![Image](area1.png)
+
+
+
 This stacked area visual adds another dimension to the bar plots by encoding time on the horizontal axis rather than having time be a filter for the bar that are plotted. This is another was to look at the underlying data in the map by seeing how new players in the NBA are distributed based on their basketball roots.  It is linked to the bar chart so that the user-defined settings are the same for the two of them.  This should allow for easy comparison between the two viewpoints of the same data. 
 
 The data density of the plot is fairly high as the area if the plot itself is used to encode information.
 The data-to-ink ratio is good as additional annotations are unnecessary outside of a legend that relates color to the group that is being plotted.
 The lie factor here is minimal, especially since it is linked to the other plot. The data density is better than a simple multiline plot although it is relatively hard to interpret. The data-to-ink ratio
 
-From this plot I learned that the rookie class each year is very inconsistent.  While there are clear trends when a single season or more of players is investigated, when looking only at the new players each year is not too useful.  The data is simply too noisy. This visualization also does a good job of showing odd trends in the data collection.  The large spikes correspond to either a large influx of new player into the league, via merger or expansion, or because the records were better kept to historians are now better aware of the players that actually took part in the games.
+From this plot I learned that the rookie class each year is very inconsistent.  While there are clear trends when a single season or more of players is investigated, when looking only at the new players each year is not too useful.  The data is simply too noisy. This visualization also does a good job of showing odd trends in the data collection.  The large spikes correspond to either a large influx of new player into the league, via merger or expansion, or because the records were better kept to historians are now better aware of the players that actually took part in the games.  But on a none serious note, the best thing about this visualizations is that sometimes you get things that are just cool even if the meaning is somewhat obsure...
+![Image](area2.png)
+
+
+
 
 ###Talented Populations###
+
+![Image](scatter1.png)
+
+
 
 The most analytical of the visuals is found in the last tab. This plot compares the populations of cities and states in the US to the population of NBA players that they have produced. I have plotted the 2010 Census data for all fifty states and Washington DC as well as the top 50 most populous American cities on the x-axis against their corresponding NBA population on the y-axis. Each point on the graph represents either a state or a city.  The size of the points are uniform as the plot shows only two dimensions however the color is important as it corresponds to the ratio of NBA players to general population for the plotted state/city. This ratio effectively shows to what degree a location is than average at producing NBA-level talent. I have also plotted a line that shows where the points would fall should the NBA population be exactly correlated with general population.
 
@@ -105,7 +129,16 @@ This project was challenging in that I had ambitious plans for a single interact
 
 If I were focused on only the visualization side of the project, then I would have made the data simple and preformatted so that I could work on maximizing the value that one could get out of visually interacting with the data.  In hindsight, that would have been the wiser decision as a more polished and presentable interactive visualization would have been produced with less of a time investment.  However, I still have learned a lot about the process of going from an idea about how to visualize data and the underlying information embedded in a theoretical data set to actually creating that visualization, even if the beginning and middle part of that process were much more time consuming that originally imagined. 
 
-More specific challenges I have encountered, but still yet to conquer involve are mostly data structuring issues of how best create a data frame that ggplot can turn into lines and points.  For example, I spent a considerable about of time trying to show the paths that players took from their place of birth to high school to college and to the NBA and then between cities in the NBA.  Eventually, I was able to connect the dots on my map and show the migrations of the professional basketball players, but the data was too messy and the added information was too low for the amount of complexity that it was going to take, so I eventually scrapped the project.
+More specific challenges I have encountered, but still yet to conquer involve are mostly data structuring issues of how best create a data frame that ggplot can turn into lines and points.  For example, I spent a considerable about of time trying to show the paths that players took from their place of birth to high school to college and to the NBA and then between cities in the NBA.  Eventually, I was able to connect the dots on my map and show the migrations of the professional basketball players, but the data was too messy and the added information was too low for the amount of complexity that it was going to take, so I eventually scrapped the project. But here is an idea...
+
+![Image](migrations1.png)
+
+Or not an idea...
+
+![Image](blooper1.png)
+
+![Image](blooper2.png)
+
 
 
 If I were to continue with this visualization, I would be sure to implement the migrations of the players.  I would also allow for the selection of cities and players for the user to highlight/brush so that they can see where their favorite player is from or what other places feed players to a user's favorite team. The highlighting could be expanded to correspond to the other plots, so, for instance, if San Francisco were highlighted then the bar plot and the scatter plot and the time series plot would all be sure to include San Francisco although it may not be in the top ten that are automatically shown. 
