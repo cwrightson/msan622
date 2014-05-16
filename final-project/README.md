@@ -65,7 +65,7 @@ The lie factor of a bar chart is very close to one. Really the only thing that c
 
 ###NBA Geographics over Time###
 
-This visual adds another dimension to the bar plots by encoding time on the horizontal axis rather than having time be a filter for the bar that are plotted. This is another was to look at the underlying data in the map by seeing how new players in the NBA are distributed based on their basketball roots.
+This visual adds another dimension to the bar plots by encoding time on the horizontal axis rather than having time be a filter for the bar that are plotted. This is another was to look at the underlying data in the map by seeing how new players in the NBA are distributed based on their basketball roots.  It is linked to the bar chart so that the user-defined settings are the same for the two of them.  This should allow of for easy comparison between the two viewpoints of the same data. 
 
 ###Talented Populations###
 
@@ -113,6 +113,15 @@ This section should range from 1 to 3 paragraphs of text.
 
 This project was challeging in that I had ambitiuos plans for a single interactive map that could do many things over a complex data set. From the beginning I was focused on a data set that was fun and meaningful to me and therefore spent more time collecting the data, processing the data and then figuring out how to format the data to meet ggplot's needs. For this reason I feel that a lot of the visuals and interactivity suffered because just having something to plot took much longer than if I had worked with a pretty data set from the UCI Machine Learning repository. 
 
+If I were focused on only the visualization side of the project, then I would have made the data simple and preformated so that I could work on maximizing the value that one could get out of visually interacting with the data.  In hindsight, that would have been the wiser decision as a more polished and presentable interactive visualization would have been produced with less of a time investment.  However, I still have learned a lot about the process of going from an idea about how to visualize data and the underlying information embedded in a theorethical data set to actually creating that visualization, even if the beginning and middle part of that process were much more time consuming that originally imagined. 
 
+More specific challeges I have encountered, but stil yet to conquer involve are mostly formatting inssues of how best create a data frame that ggplot can turn into lines and points.  For example, I spent a considerable about of time trying to show the paths that players took from their place of birth to high school to college and to the NBA and then between cities in the NBA.  Eventually I was able to connect the dots on my map and show the migrations of the professional basketball players, but the data was too messy and the added information was too low for the amount of complexity that it was going to take, so I eventually scrapped the project.  At least I made these images from it...
+
+
+If I were to continue with this visualization, I would be sure to implement the migrations of the players.  I would also allow for the selection of cities and players for the user to highlight/brush so that they can see where their favorite player is from or what other places feed players to a user's favorite team. The highlighting could be expanded to correspond to the other plots, so, for instance, if San Francisco were highlighted then the bar plot and the scatter plot and the time series plot would all be sure to incluse San Francisco although it may not be in the top ten that are automatically shown. 
+
+Another important improvement would for the time series multiline plot, which I believe is the weakest graph of the four.  It would be much more useful and interpretable if each y-value were for all players that were in the NBA during a given year rather than just those that were rookies that season.  It is harder to see trends when the rookie classes each year are noiser than the larger sample size of some 300+ players each year. 
+
+Another challenge that I have mentioned previously was in regard to maintaining consistent dot size limits or bar size limits so that when the data is filtered that the limits to not scale to the new maximum value.  For a bar plot or a scatter plot this is simple as ggplot allows for the axis limits to be hard coded to a value.  However when a size or an alpha value is desired to not be rescaled, I was not able to keep ggplot from rescaling the dot size allow I was scaleing the maximum size in hthe other direction so that the new maximum would be the same size as before. 
 
 Please include a "Challenges" section where you discuss the challenges you encountered during this project. Describe how you addressed the challenge, or why you did not address the challenge. Please also discuss what you would have liked to implement if you had more time.

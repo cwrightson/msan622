@@ -575,6 +575,7 @@ plot2 <- function(dataset, geo, when, us_int, seasons){
   p <- p + theme(axis.ticks.x = element_blank())
   p <- p + scale_x_discrete(expand = c(0,0))
   p <- p + scale_y_discrete(expand = c(0,0))
+  p <- p + theme(panel.grid = element_blank())
   p <- p + coord_flip()
   
   return(p)
@@ -680,12 +681,16 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
               '#ffff33','#a65628','#f781bf','#999999', '#000000')
  
  p <- p + scale_fill_manual(values = palette)
- p <- p + theme(axis.title.x = element_text('Season'))
- p <- p + theme(axis.title.y = element_text('NBA Population'))
+ p <- p + xlab("Season")
+ p <- p + ylab("NBA Population")
+ #p <- p + theme(axis.title.x = element_text('Season'))
+ #p <- p + theme(axis.title.y = element_text('NBA Population'))
  p <- p + theme(axis.ticks.x = element_blank())
  p <- p + theme(axis.ticks.y = element_blank())
  p <- p + scale_x_discrete(expand = c(0,0))
  p <- p + scale_y_discrete(expand = c(0,0))
+ p <- p + theme(axis.text.x = element_text(angle = 90, vjust = .6, hjust = 1))
+ p <- p + theme(panel.grid = element_blank())
   #p
   
   
