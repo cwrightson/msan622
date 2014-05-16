@@ -842,7 +842,7 @@ shinyServer(function(input, output) {
   output$plot1a <- renderPlot(
 {
   #print(plot1(all_data, input$map), input$location))
-  print(plot1a(data, line_df, input$map_b, input$lines, input$location_b, input$seasons1_b))
+  print(plot1a(data, line_df, input$map_a, input$lines, input$location_a, input$seasons1_a))
 }, 
 width = 750,
 height = 400)

@@ -55,7 +55,7 @@ This visualization is all about density, comparision and their evolution of time
 
 ###Basketball Hotbeds###
 
-The scond visualization is effectively a the same information as the map but in bar chart format so that the user can easily compare the sizes of the largest populations for various cross-sections of the data. Here the number of players that are from a particular location is represented by the length of the corresponding bar. The locations are no longer locationed spatially but ordered vertically from largest to smallest.  The data can again be subset by place of birth, high school, and college as well as which seasons since 1946 should count toward the tabulations. The biggest idfference in information provided by the bar chart over the map is that the spatial information is now encoded by a geographic category that allows the user to select between city level, state level, country level or continental level. 
+The second visualization is effectively a the same information as the map but in bar chart format so that the user can easily compare the sizes of the largest populations for various cross-sections of the data. Here the number of players that are from a particular location is represented by the length of the corresponding bar. The locations are no longer locationed spatially but ordered vertically from largest to smallest.  The data can again be subset by place of birth, high school, and college as well as which seasons since 1946 should count toward the tabulations. The biggest idfference in information provided by the bar chart over the map is that the spatial information is now encoded by a geographic category that allows the user to select between city level, state level, country level or continental level. 
 
 
 

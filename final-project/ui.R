@@ -63,7 +63,7 @@ shinyUI(
 #                    c('Show Migration', 'Hide Migration'),
 #                    selected = 'Hide Migration'
 #                 )),
-              br(),br(),br(),br(),br(),br(),
+              br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),
               fluidRow(
                 radioButtons(
                   "map_b",
@@ -182,7 +182,7 @@ shinyUI(
           tabPanel("NBA Player Map", 
                    plotOutput("plot1a", 
                               width = "100%", 
-                              height = "600px"),
+                              height = "800px"),
                    plotOutput("plot1b", 
                               width = "100%", 
                               height = "600px")),
