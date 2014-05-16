@@ -661,8 +661,8 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, zoom.x, zoom.y){
     }
   }
   print(zoom.x)
-  p <- p + scale_x_continuous(limit = zoom.x)
-  p <- p + scale_y_continuous(limit = zoom.y)
+  #p <- p + scale_x_continuous(limit = zoom.x)
+  #p <- p + scale_y_continuous(limit = zoom.y)
   print(sumNBA)
   print(sumGeneral)
   p <- p + geom_abline(intercept = 0-zoom.y[1], slope = sumNBA/sumGeneral)
