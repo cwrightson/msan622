@@ -65,7 +65,7 @@ The lie factor of a bar chart is very close to one. Really the only thing that c
 
 ###NBA Geographics over Time###
 
-This visual adds another dimension to the bar plots by encoding time on the horizontal axis rather than having time be a filter for the bar that are plotted. This is another was to look at the underlying data in the map by seeing how new players in the NBA are distributed based on their basketball roots.  It is linked to the bar chart so that the user-defined settings are the same for the two of them.  This should allow of for easy comparison between the two viewpoints of the same data. 
+This stacked area visual adds another dimension to the bar plots by encoding time on the horizontal axis rather than having time be a filter for the bar that are plotted. This is another was to look at the underlying data in the map by seeing how new players in the NBA are distributed based on their basketball roots.  It is linked to the bar chart so that the user-defined settings are the same for the two of them.  This should allow of for easy comparison between the two viewpoints of the same data. 
 
 ###Talented Populations###
 

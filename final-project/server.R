@@ -686,12 +686,21 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
  #p <- p + theme(axis.title.x = element_text('Season'))
  #p <- p + theme(axis.title.y = element_text('NBA Population'))
  p <- p + theme(axis.ticks.x = element_blank())
+ p <- p + theme(axis.text.x = element_blank())
  p <- p + theme(axis.ticks.y = element_blank())
+ p <- p + theme(axis.text.x = element_blank())
  p <- p + scale_x_discrete(expand = c(0,0))
  p <- p + scale_y_discrete(expand = c(0,0))
  p <- p + theme(axis.text.x = element_text(angle = 90, vjust = .6, hjust = 1))
  p <- p + theme(panel.grid = element_blank())
-  #p
+ formatter <- function(x){
+   y <- rep('',length(x))
+   for(i in seq(1,length(x),5)){
+     y[i] <- x[i]
+   }
+    return(y)
+}
+   p <- p + scale_x_continuous(label = formatter)
   
   
   return(p)
@@ -818,7 +827,14 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
   p <- p + theme(axis.title.y = element_text('NBA Population'))
   p <- p + theme(axis.ticks.x = element_blank())
   p <- p + theme(axis.ticks.y = element_blank())
-  
+  formatter <- function(x){
+    y <- rep('',length(x))
+    for(i in 1:length(x)){
+      y[i] <- sprintf("$%.0Mf", round(x[i]/1000000))
+    }
+    return(y)
+  }
+  p <- p + scale_x_continuous(label = formatter)
   
   return(p)
 }
