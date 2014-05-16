@@ -63,7 +63,7 @@ shinyUI(
 #                    c('Show Migration', 'Hide Migration'),
 #                    selected = 'Hide Migration'
 #                 )),
-              br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),
+              br(),br(),br(),br(),br(),br(),br(),br(),br(),
               fluidRow(
                 radioButtons(
                   "map_b",

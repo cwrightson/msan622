@@ -699,14 +699,26 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, zoom.x, zoom.y){
       sumNBA <- sum(df$NBATotalBirth)
       sumGeneral <- sum(df$BirthStatePop2010)
       
-      p <- ggplot(df, aes(y = NBATotalBirth, x = StatePop2010, color = '#31a354', size = 3, label=State)) + geom_point()
+      p <- ggplot(df, aes(y = NBATotalBirth, 
+                          x = StatePop2010, 
+                          #color = '#31a354', 
+                          size = 3, 
+                          label=State, 
+                          color = NBATotalBirth/StatePop2010))
+      p <- p + geom_point()
       p <- p + geom_abline(intercept = 0, slope = sumNBA/sumGeneral)
       p <- p + geom_text(color = 'black')
     }
     else{
       sumNBA <- sum(df$NBATotalHighSchool)
       sumGeneral <- sum(df$BirthStatePop2010)
-      p <- ggplot(df, aes(y = NBATotalHighSchool, x = StatePop2010, color = '#31a354', size = 3, label=State)) + geom_point()
+      p <- ggplot(df, aes(y = NBATotalHighSchool, 
+                          x = StatePop2010, 
+                          #color = '#31a354', 
+                          size = 3, 
+                          label=State, 
+                          color = NBATotalHighSchool/StatePop2010))
+      p <- p + geom_point()
       p <- p + geom_abline(intercept = 0, slope = sumNBA/sumGeneral)
       p <- p + geom_text(color = 'black')
     }
@@ -718,7 +730,13 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, zoom.x, zoom.y){
       sumNBA <- sum(df$NBATotalBirth)
       sumGeneral <- sum(df$BirthCityPop2010)
       
-      p <- ggplot(df, aes(y = NBATotalBirth, x = CityPop2010, color = '#31a354', size = 3, label=City)) + geom_point()
+      p <- ggplot(df, aes(y = NBATotalBirth, 
+                          x = CityPop2010, 
+                          #color = '#31a354', 
+                          size = 3, 
+                          label=City, 
+                          color = NBATotalBirth/CityPop2010))
+      p <- p + geom_point()
       p <- p + geom_abline(intercept = 0, slope = sumNBA/sumGeneral)
       p <- p + geom_text(color = 'black')
     }
@@ -727,7 +745,13 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, zoom.x, zoom.y){
       sumNBA <- sum(df$NBATotalHighSchool)
       sumGeneral <- sum(df$BirthCityPop2010)
       
-      p <- ggplot(df, aes(y = NBATotalHighSchool, x = CityPop2010, color = '#31a354', size = 3, label=City)) + geom_point()
+      p <- ggplot(df, aes(y = NBATotalHighSchool, 
+                          x = CityPop2010, 
+                          #color = '#31a354', 
+                          size = 3, 
+                          label=City, 
+                          color = NBATotalHighSchool/CityPop2010))
+      p <- p + geom_point()
       p <- p + geom_abline(intercept = 0, slope = sumNBA/sumGeneral)
       p <- p + geom_text(color = 'black')
     }
@@ -737,7 +761,7 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, zoom.x, zoom.y){
   #p <- p + scale_y_continuous(limit = zoom.y)
   print(sumNBA)
   print(sumGeneral)
-  p <- p + geom_abline(intercept = 0-zoom.y[1], slope = sumNBA/sumGeneral)
+  #p <- p + geom_abline(intercept = 0-zoom.y[1], slope = sumNBA/sumGeneral)
   #p
   
   return(p)
@@ -751,80 +775,80 @@ shinyServer(function(input, output) {
   
   cat("Press \"ESC\" to exit...\n")
 
-  get_dot_df <- reactive(
-{
-  lower <- as.character(input$seasons1[1]-1)
-  upper <- as.character(input$seasons1[2])
-  
-  data <- data[which(data$LastYear > lower),]
-  data <- data[which(data$FirstYear < upper),]
-  
-  t1 <- data.frame(table(data$birthCityState))
-  t2 <- data.frame(table(data$hsCityState))
-  t3 <- data.frame(table(data$CollegeNameGood))
-  t4 = data.frame('Var1' = unique(data$Team1), 'Freq' = rep(0,length(unique(data$Team1))))
-  for(i in 1:length(data$Player)){
-    for(j in 24:39){
-      city <- data[i,j]
-      t4$Freq[which(t4$Var1 == city)] <- t4$Freq[which(t4$Var1 == city)] +1
-    }
-  }
-  
-  dot_b <- t1
-  names(dot_b) <- c('City', 'Num')
-  dot_b['Type'] <- 'Birth'
-  dot_h <- t2
-  names(dot_h) <- c('City', 'Num')
-  dot_h['Type'] <- 'High School'
-  dot_c <- t3
-  names(dot_c) <- c('City', 'Num')
-  dot_c['Type'] <- 'College'
-  dot_n <- t4
-  names(dot_n) <- c('City', 'Num')
-  dot_n['Type'] <- 'NBA'
-  
-  dot_df2 <- rbind(dot_b,dot_h,dot_c,dot_n)
-  
-  lat <- rep(0,length(dot_df2[,1]))
-  long <- rep(0,length(dot_df2[,1]))
-  for(i in 1:length(dot_df2[,1])){
-    if(dot_df2$Type[i] == 'Birth'){
-      lat[i] <- data$BirthLat[which(data$birthCityState == dot_df2$City[i])][1]
-      long[i] <- data$BirthLong[which(data$birthCityState == dot_df2$City[i])][1]
-    }
-    if(dot_df2$Type[i] == 'High School'){
-      lat[i] <- data$HSLat[which(data$hsCityState == dot_df2$City[i])][1]
-      long[i] <- data$HSLong[which(data$hsCityState == dot_df2$City[i])][1]
-    }
-    if(dot_df2$Type[i] == 'College'){
-      lat[i] <- data$CollegeLat[which(data$CollegeNameGood == dot_df2$City[i])][1]
-      long[i] <- data$CollegeLong[which(data$CollegeNameGood == dot_df2$City[i])][1]
-    }
-    if(dot_df2$Type[i] == 'NBA'){
-      lat[i] <- data$Team1_Lat[which(data$Team1 == dot_df2$City[i])][1]
-      long[i] <- data$Team1_Long[which(data$Team1 == dot_df2$City[i])][1]
-    }
-  }
-  dot_df2['Lat'] <- lat
-  dot_df2['Long'] <- long
-  dot_df2$Type <- as.factor(dot_df2$Type)
-  
-  states <- rep('',length(dot_df2$City))
-  for(i in 1:length(dot_df2[,1])){
-    if(dot_df2$Type[i] == 'Birth'){
-    states[i] <- data$BirthState[which(data$birthCityState == as.character(dot_df2$City[i]))][1]
-    }
-    if(dot_df2$Type[i] == 'High School'){
-      states[i] <- data$BirthState[which(data$hsCityState == as.character(dot_df2$City[i]))][1]
-    }
-  }
-  dot_df2['State'] <- states
-  dot_df2 <- dot_df2[which(dot_df2$City != 'none none'),]
-  #print(dot_df[1,])
-  return(dot_df2)
-
-}
-  )
+#   get_dot_df <- reactive(
+# {
+#   lower <- as.character(input$seasons1[1]-1)
+#   upper <- as.character(input$seasons1[2])
+#   
+#   data <- data[which(data$LastYear > lower),]
+#   data <- data[which(data$FirstYear < upper),]
+#   
+#   t1 <- data.frame(table(data$birthCityState))
+#   t2 <- data.frame(table(data$hsCityState))
+#   t3 <- data.frame(table(data$CollegeNameGood))
+#   t4 = data.frame('Var1' = unique(data$Team1), 'Freq' = rep(0,length(unique(data$Team1))))
+#   for(i in 1:length(data$Player)){
+#     for(j in 24:39){
+#       city <- data[i,j]
+#       t4$Freq[which(t4$Var1 == city)] <- t4$Freq[which(t4$Var1 == city)] +1
+#     }
+#   }
+#   
+#   dot_b <- t1
+#   names(dot_b) <- c('City', 'Num')
+#   dot_b['Type'] <- 'Birth'
+#   dot_h <- t2
+#   names(dot_h) <- c('City', 'Num')
+#   dot_h['Type'] <- 'High School'
+#   dot_c <- t3
+#   names(dot_c) <- c('City', 'Num')
+#   dot_c['Type'] <- 'College'
+#   dot_n <- t4
+#   names(dot_n) <- c('City', 'Num')
+#   dot_n['Type'] <- 'NBA'
+#   
+#   dot_df2 <- rbind(dot_b,dot_h,dot_c,dot_n)
+#   
+#   lat <- rep(0,length(dot_df2[,1]))
+#   long <- rep(0,length(dot_df2[,1]))
+#   for(i in 1:length(dot_df2[,1])){
+#     if(dot_df2$Type[i] == 'Birth'){
+#       lat[i] <- data$BirthLat[which(data$birthCityState == dot_df2$City[i])][1]
+#       long[i] <- data$BirthLong[which(data$birthCityState == dot_df2$City[i])][1]
+#     }
+#     if(dot_df2$Type[i] == 'High School'){
+#       lat[i] <- data$HSLat[which(data$hsCityState == dot_df2$City[i])][1]
+#       long[i] <- data$HSLong[which(data$hsCityState == dot_df2$City[i])][1]
+#     }
+#     if(dot_df2$Type[i] == 'College'){
+#       lat[i] <- data$CollegeLat[which(data$CollegeNameGood == dot_df2$City[i])][1]
+#       long[i] <- data$CollegeLong[which(data$CollegeNameGood == dot_df2$City[i])][1]
+#     }
+#     if(dot_df2$Type[i] == 'NBA'){
+#       lat[i] <- data$Team1_Lat[which(data$Team1 == dot_df2$City[i])][1]
+#       long[i] <- data$Team1_Long[which(data$Team1 == dot_df2$City[i])][1]
+#     }
+#   }
+#   dot_df2['Lat'] <- lat
+#   dot_df2['Long'] <- long
+#   dot_df2$Type <- as.factor(dot_df2$Type)
+#   
+#   states <- rep('',length(dot_df2$City))
+#   for(i in 1:length(dot_df2[,1])){
+#     if(dot_df2$Type[i] == 'Birth'){
+#     states[i] <- data$BirthState[which(data$birthCityState == as.character(dot_df2$City[i]))][1]
+#     }
+#     if(dot_df2$Type[i] == 'High School'){
+#       states[i] <- data$BirthState[which(data$hsCityState == as.character(dot_df2$City[i]))][1]
+#     }
+#   }
+#   dot_df2['State'] <- states
+#   dot_df2 <- dot_df2[which(dot_df2$City != 'none none'),]
+#   #print(dot_df[1,])
+#   return(dot_df2)
+# 
+# }
+#   )
 # get_datatime <- reactive(
 # {
 #   lower <- as.character(input$seasons2[1]-1)

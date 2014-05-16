@@ -57,10 +57,15 @@ This visualization is all about density, comparision and their evolution of time
 
 The second visualization is effectively a the same information as the map but in bar chart format so that the user can easily compare the sizes of the largest populations for various cross-sections of the data. Here the number of players that are from a particular location is represented by the length of the corresponding bar. The locations are no longer locationed spatially but ordered vertically from largest to smallest.  The data can again be subset by place of birth, high school, and college as well as which seasons since 1946 should count toward the tabulations. The biggest idfference in information provided by the bar chart over the map is that the spatial information is now encoded by a geographic category that allows the user to select between city level, state level, country level or continental level. 
 
+The data density
 
+The data-to-ink ratio
+
+The lie factor of a bar chart is very close to one. Really the only thing that could be misleading about the chart is that not all of the data is shown because showing over one thousand unique municipalities in a single bar chart would be silly. I have limited all of the charts to plot at most ten locations. It is possible that the tenth most populous locations and the eleventh most populous location have the same number of NBA players. It this case it is unclear which location should be displayed or which location is indeed the tenth largest for that cross-section.  
 
 ###NBA Geographics over Time###
 
+This visual adds another dimension to the bar plots by encoding time on the horizontal axis rather than having time be a filter for the bar that are plotted. This is another was to look at the underlying data in the map by seeing how new players in the NBA are distributed based on their basketball roots.
 
 ###Talented Populations###
 
