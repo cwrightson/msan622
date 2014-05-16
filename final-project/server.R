@@ -569,9 +569,9 @@ plot2 <- function(dataset, geo, when, us_int, seasons){
 #   }
 #   print(palette)
   print(when)
-  p <- ggplot(df_st, aes(x = Var1, y = Freq, color = Freq))
+  p <- ggplot(df_st, aes(x = Var1, y = Freq, fill = Freq))
   p <- p + geom_bar()
-  p <- p + scale_colour_gradient(low = '#525252', high = '#252525', guide = "none")
+  p <- p + scale_fill_gradient(low = '#525252', high = '#252525', guide = "none")
   p <- p + theme(axis.ticks.x = element_blank())
   p <- p + scale_x_discrete(expand = 0))
   p <- p + scale_y_discrete(expand = 0))
@@ -673,13 +673,13 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
   df <- df[which(df$Var1 %in% best),]
   
   #print(df_st$Var1)
- p <- ggplot(df, aes(x = Var2, y = Freq, group = Var1, color = Var1))
+ p <- ggplot(df, aes(x = Var2, y = Freq, group = Var1, fill = Var1))
  p <- p + geom_area()
  
  palette <- c('#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#66c2a4', 
               '#ffff33','#a65628','#f781bf','#999999', '#000000')
  
- p <- p + scale_colour_manual(values = palette)
+ p <- p + scale_fill_manual(values = palette)
  p <- p + theme(axis.title.x = element_text('Season'))
  p <- p + theme(axis.title.y = element_text('NBA Population'))
  p <- p + theme(axis.ticks.x = element_blank())
