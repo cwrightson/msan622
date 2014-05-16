@@ -69,6 +69,7 @@ This visual adds another dimension to the bar plots by encoding time on the hori
 
 ###Talented Populations###
 
+The most analytical of the visuals is found in the last tab. This plot compares the populations of cities and states in the US to the population of NBA players that they have produced. I have plotted the 2010 Census data for all fifty states and Washington DC as well as the top 50 most populous American cities on the x-axis against their corresponding NBA population on the y-axis. Each point on the graph represents either a state or a city.  The size of the points are uniform as the plot shows only two dimensions however the color is important as it corresponds to the ratio of NBA plyers to general population for the plotted state/city. This ratio effectively shows to what degree a location is than average at producing NBa-level talent. I have also plotted a line that shows where the points would fall should the NBA population be exactly correlated with general population.
 
 
 For each visualization, discuss the following:

@@ -567,9 +567,11 @@ plot2 <- function(dataset, geo, when, us_int, seasons){
   if(when == 'High School'){
     palette <- c('#377eb8','#5697cc')
   }
+  print(palette)
+  print(when)
   p <- ggplot(df_st, aes(x = Var1, y = Freq , fill = Freq))
   p <- p + geom_bar()
-  p <- p + scale_colour_gradient(low = palette[2], high = palette[1],guide = "none")
+  p <- p + scale_colour_gradient(low = palette[2], high = palette[1], guide = "none")
   p <- p + coord_flip()
   
   return(p)
@@ -669,11 +671,11 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
   
   #print(df_st$Var1)
  p <- ggplot(df, aes(x = Var2, y = Freq, group = Var1, color = Var1))
- p <- p + geom_line()
+ p <- p + geom_area()
  
  palette <- c('#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf','#999999', '#000')
  
- p <- p + scale_colour_manual(values = palette ,guide = "none")
+ p <- p + scale_colour_manual(values = palette)
   #p
   
   
@@ -777,8 +779,8 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
     }
   }
   print(zoom.x)
-  p <- p + scale_x_continuous(limit = zoom.x)
-  p <- p + scale_y_continuous(limit = zoom.y)
+  #p <- p + scale_x_continuous(limit = zoom.x)
+  #p <- p + scale_y_continuous(limit = zoom.y)
   print(sumNBA)
   print(sumGeneral)
   #p <- p + geom_abline(intercept = 0-zoom.y[1], slope = sumNBA/sumGeneral)
