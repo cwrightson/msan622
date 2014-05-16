@@ -573,8 +573,8 @@ plot2 <- function(dataset, geo, when, us_int, seasons){
   p <- p + geom_bar()
   p <- p + scale_fill_gradient(low = '#525252', high = '#252525', guide = "none")
   p <- p + theme(axis.ticks.x = element_blank())
-  p <- p + scale_x_discrete(expand = 0))
-  p <- p + scale_y_discrete(expand = 0))
+  p <- p + scale_x_discrete(expand = c(0,0))
+  p <- p + scale_y_discrete(expand = c(0,0))
   p <- p + coord_flip()
   
   return(p)
@@ -684,8 +684,8 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
  p <- p + theme(axis.title.y = element_text('NBA Population'))
  p <- p + theme(axis.ticks.x = element_blank())
  p <- p + theme(axis.ticks.y = element_blank())
- p <- p + scale_x_discrete(expand = 0))
- p <- p + scale_y_discrete(expand = 0))
+ p <- p + scale_x_discrete(expand = c(0,0))
+ p <- p + scale_y_discrete(expand = c(0,0))
   #p
   
   
