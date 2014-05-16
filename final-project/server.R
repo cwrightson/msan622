@@ -573,11 +573,23 @@ plot2 <- function(dataset, geo, when, us_int, seasons){
   p <- p + geom_bar()
   p <- p + scale_fill_gradient(low = '#525252', high = '#252525', guide = "none")
   p <- p + theme(axis.ticks.x = element_blank())
+  p <- p + theme(axis.title.x = element_blank())
+  p <- p + theme(axis.title.y = element_blank())
   p <- p + scale_x_discrete(expand = c(0,0))
   p <- p + scale_y_discrete(expand = c(0,0))
   p <- p + theme(panel.grid = element_blank())
+
   p <- p + coord_flip()
-  
+formatter <- function(x){
+  y <- rep('',length(x))
+  for(i in seq(1,length(x),5)){
+    y[i] <- x[i]
+  }
+  return(y)
+}
+p <- p + scale_x_discrete(label = formatter)
+                          
+                          
   return(p)
 }
 
@@ -700,7 +712,7 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
    }
     return(y)
 }
-   p <- p + scale_x_continuous(label = formatter)
+   p <- p + scale_x_discrete(label = formatter)
   
   
   return(p)
@@ -830,7 +842,7 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
   formatter <- function(x){
     y <- rep('',length(x))
     for(i in 1:length(x)){
-      y[i] <- sprintf("$%.0Mf", round(x[i]/1000000))
+      y[i] <- sprintf("$%.0fM", round(x[i]/1000000))
     }
     return(y)
   }

@@ -124,4 +124,9 @@ Another important improvement would for the time series multiline plot, which I 
 
 Another challenge that I have mentioned previously was in regard to maintaining consistent dot size limits or bar size limits so that when the data is filtered that the limits to not scale to the new maximum value.  For a bar plot or a scatter plot this is simple as ggplot allows for the axis limits to be hard coded to a value.  However when a size or an alpha value is desired to not be rescaled, I was not able to keep ggplot from rescaling the dot size allow I was scaleing the maximum size in hthe other direction so that the new maximum would be the same size as before. 
 
+Another challenge is getting the initial map to load quickly.  It takes a long time to load because of the way that the size of the dots is calculated.  Another problem is that it must recalculate the dot size eveytime the years are re-filtered by the user. This would not be a problem if the NBA teams were not plotted as well but because the teams that a single player plays for can not be represented in a single column, the table() function can not be used and a nested for loops are necessary to calculate a total that spans multiple lists. 
+It I had more time I would create a hierachical look up table witht the values for all of the various potential year filterings pre-stored so that the calculation would be instant and the map would render quickly.
+
+
+
 Please include a "Challenges" section where you discuss the challenges you encountered during this project. Describe how you addressed the challenge, or why you did not address the challenge. Please also discuss what you would have liked to implement if you had more time.
