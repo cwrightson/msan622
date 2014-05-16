@@ -560,18 +560,18 @@ plot2 <- function(dataset, geo, when, us_int, seasons){
   
   
   #print(df_st$Var1)
-  palette <- c('#e41a1c','#ea4749')
-  if(when == 'College'){
-    palette <- c('#4daf4a','#6ec16b')
-  }
-  if(when == 'High School'){
-    palette <- c('#377eb8','#5697cc')
-  }
-  print(palette)
+#   palette <- c('#e41a1c','#ea4749')
+#   if(when == 'College'){
+#     palette <- c('#4daf4a','#6ec16b')
+#   }
+#   if(when == 'High School'){
+#     palette <- c('#377eb8','#5697cc')
+#   }
+#   print(palette)
   print(when)
-  p <- ggplot(df_st, aes(x = Var1, fill = Freq))
+  p <- ggplot(df_st, aes(x = Var1, y = Freq, color = Freq))
   p <- p + geom_bar()
-  p <- p + scale_colour_gradient(low = palette[1], high = palette[2], guide = "none")
+  p <- p + scale_colour_gradient(low = '#525252', high = '#252525', guide = "none")
   p <- p + coord_flip()
   
   return(p)
@@ -674,7 +674,7 @@ plot3 <- function(dataset, geo, when, us_int, seasons){
  p <- p + geom_area()
  
  palette <- c('#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#66c2a4', 
-              '#ffff33','#a65628','#f781bf','#999999', '#000')
+              '#ffff33','#a65628','#f781bf','#999999', '#000000')
  
  p <- p + scale_colour_manual(values = palette)
   #p
@@ -725,7 +725,8 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
       p <- ggplot(df, aes(y = NBATotalBirth, 
                           x = StatePop2010, 
                           #color = '#31a354', 
-                          size = 3, 
+                          size = 10, 
+                          alpha = .6, 
                           label=State, 
                           color = NBATotalBirth/StatePop2010))
       p <- p + geom_point()
@@ -738,7 +739,8 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
       p <- ggplot(df, aes(y = NBATotalHighSchool, 
                           x = StatePop2010, 
                           #color = '#31a354', 
-                          size = 3, 
+                          size = 10, 
+                          alpha = .6, 
                           label=State, 
                           color = NBATotalHighSchool/StatePop2010))
       p <- p + geom_point()
@@ -756,7 +758,8 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
       p <- ggplot(df, aes(y = NBATotalBirth, 
                           x = CityPop2010, 
                           #color = '#31a354', 
-                          size = 3, 
+                          size = 10, 
+                          alpha = .6, 
                           label=City, 
                           color = NBATotalBirth/CityPop2010))
       p <- p + geom_point()
@@ -771,7 +774,8 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
       p <- ggplot(df, aes(y = NBATotalHighSchool, 
                           x = CityPop2010, 
                           #color = '#31a354', 
-                          size = 3, 
+                          size = 10, 
+                          alpha = .6,
                           label=City, 
                           color = NBATotalHighSchool/CityPop2010))
       p <- p + geom_point()
@@ -786,6 +790,8 @@ plot4 <- function(player_data, city_data, state_data, sc, bh, seasons){
   print(sumGeneral)
   #p <- p + geom_abline(intercept = 0-zoom.y[1], slope = sumNBA/sumGeneral)
   p <- p + scale_colour_gradient(low = "#2166ac", high = "#b2182b",guide = "none")
+  p <- p + scale_size_continuous(guide = "none")
+  p <- p + scale_alpha_continuous(guide = "none")
   p <- p + theme(panel.background = element_rect(fill = NA))
   p <- p + theme(legend.key = element_rect(fill = NA))
   p <- p + theme(panel.grid.major = element_line(color = "grey90"))

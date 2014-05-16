@@ -69,8 +69,9 @@ This visual adds another dimension to the bar plots by encoding time on the hori
 
 ###Talented Populations###
 
-The most analytical of the visuals is found in the last tab. This plot compares the populations of cities and states in the US to the population of NBA players that they have produced. I have plotted the 2010 Census data for all fifty states and Washington DC as well as the top 50 most populous American cities on the x-axis against their corresponding NBA population on the y-axis. Each point on the graph represents either a state or a city.  The size of the points are uniform as the plot shows only two dimensions however the color is important as it corresponds to the ratio of NBA plyers to general population for the plotted state/city. This ratio effectively shows to what degree a location is than average at producing NBa-level talent. I have also plotted a line that shows where the points would fall should the NBA population be exactly correlated with general population.
+The most analytical of the visuals is found in the last tab. This plot compares the populations of cities and states in the US to the population of NBA players that they have produced. I have plotted the 2010 Census data for all fifty states and Washington DC as well as the top 50 most populous American cities on the x-axis against their corresponding NBA population on the y-axis. Each point on the graph represents either a state or a city.  The size of the points are uniform as the plot shows only two dimensions however the color is important as it corresponds to the ratio of NBA plyers to general population for the plotted state/city. This ratio effectively shows to what degree a location is than average at producing NBA-level talent. I have also plotted a line that shows where the points would fall should the NBA population be exactly correlated with general population.
 
+The lie factor for this plot is 
 
 For each visualization, discuss the following:
 
@@ -109,5 +110,9 @@ Please include a "Prototype Feedback" section where you discuss the prototype ex
 This section should range from 1 to 3 paragraphs of text.
 
 ## Challenges ##
+
+This project was challeging in that I had ambitiuos plans for a single interactive map that could do many things over a complex data set. From the beginning I was focused on a data set that was fun and meaningful to me and therefore spent more time collecting the data, processing the data and then figuring out how to format the data to meet ggplot's needs. For this reason I feel that a lot of the visuals and interactivity suffered because just having something to plot took much longer than if I had worked with a pretty data set from the UCI Machine Learning repository. 
+
+
 
 Please include a "Challenges" section where you discuss the challenges you encountered during this project. Describe how you addressed the challenge, or why you did not address the challenge. Please also discuss what you would have liked to implement if you had more time.
