@@ -27,7 +27,7 @@ library(shiny)
 shiny::runGitHub('msan622', 'cwrightson', subdir = "final-project")
 ```
 
-### Data ###
+## Data ##
 
 The data for my visualization I procured myself by scraping the website basketball-reference.com.  
 I used Python and the BeautifulSoup package to collect the biographies and yearly statistics of all 4217 and players known to have played in at least one game in the National Basketball Association (NBA), the American Basketball Association (ABA) or the Basketball Association of America (BAA) since the end of World War II. The raw(with BBR errors) .json file, `BBR_data_2014_04_15.json`, can be found in this repository as well. All of current NBA franchises have their foundational roots in one of these three leagues, which are considered the top professional leagues to have existed in North America since 1946.  
@@ -37,18 +37,18 @@ With a data set that has far too many dimensions, variables and cross-sections, 
 Additonal population data from the 2010 US Census was need.
 Geocoding was processed via a combination of the geopy package for Python to call the GeoNames API as well as a public MaxMind GeoLiteCity file and the Google Geocoding API. Also, basketball-reference.com is not without errors and some 200+ city locations were corrected by hand as municipalites change names or are annexed over time or simply mispelled. 
 
-### Techniques ###
+## Techniques ##
 
-#"NBA Player Map"#
+###NBA Player Map###
 The most important visualization of the quartet is the map which plots the location of all 4217 players during various known points in their lifetime. For many of the players it is known in what city they were born, the city in which they attend high school, the college they went to if any, and the location of all of the NBA, ABA, and BAA teams they played for. For this graphic, individual municipalities were mapped as points using their latitude and logitude.  This points were plotted of the stock `{maps}` shapefiles for the world and for the United States.  The color of the point is encoded to the time period during which the player was in a location; 'Place of Birth', 'High School', 'College', 'NBA'.  The points were sized based on the number of players that were from the location represented by the point at a given time period.  Therefore, a given municipality may   
 
-#"Basketball Hotbeds"#
+###Basketball Hotbeds###
 
 
-#"NBA Geographics over Time"#
+###NBA Geographics over Time###
 
 
-#"Talented Populations"#
+###Talented Populations###
 
 
 
@@ -64,7 +64,7 @@ For each visualization, discuss the following:
 
 This discussion should be approximately 2 to 5 paragraphs for each visualization, and this will heavily influence your score for this visualization.
 
-### Interactivity ###
+## Interactivity ##
 
 Please include an "Interactivity" section where you discuss the interactivity implemented in your project. Please discuss the following:
 
@@ -74,7 +74,7 @@ Please include an "Interactivity" section where you discuss the interactivity im
 
 For example, interactivity can help provide focus or context, help overcome overplotting issues, decrease or increase data density, and so on. This discussion should be approximately 2 to 5 paragraphs, depending on the amount of interactivity you implemented.
 
-### Prototype Feedback ###
+## Prototype Feedback ##
 
 Please include a "Prototype Feedback" section where you discuss the prototype exercise. Please discuss the following: 
 
@@ -88,21 +88,6 @@ Please include a "Prototype Feedback" section where you discuss the prototype ex
 
 This section should range from 1 to 3 paragraphs of text.
 
-### Challenges ###
+## Challenges ##
 
 Please include a "Challenges" section where you discuss the challenges you encountered during this project. Describe how you addressed the challenge, or why you did not address the challenge. Please also discuss what you would have liked to implement if you had more time.
-
-## Grading ###################
-
-The point breakdown will be 20 points per visualization and 20 points for interactivity. Meeting the bare minimum requirements will earn you a C letter grade. To earn a higher letter grade, you must go above and beyond the stated requirements. 
-
-Each visualization will be evaluated on its lie factor, data density, and data-ink ratio. Any non-trivial issues identified with the lie factor, data density, and data-ink ratio will result in a point deduction. For example, the following issues could result in point deductions:
-
-- Poor placement of legend, decreasing data-density by unnecessarily increasing plot size.
-
-- Illegible tick labels, decreasing data-ink ratio without providing context.
-
-- No use of color when color could have provided additional context.
-
-_Reasonable tradeoffs are expected._ For example, it is okay to add annotations that decrease data-ink ratio but increase context. Or, it is reasonable to jitter point positions in a scatterplot with overplotting issues, which increases the lie factor but increases data density.
-

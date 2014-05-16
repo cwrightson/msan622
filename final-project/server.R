@@ -225,7 +225,7 @@ if(map == 'United States'){
 
 usamap <- map_data('usa')
 
-states_list <- levels(read.csv('GeoLiteCity_20140401\\statenames.txt', header =F)$V1)
+states_list <- levels(read.csv('statenames.txt', header =F)$V1)
 
 states48 <- c(states_list, 'District of Columbia')[c(1,3:10,12:51)]
 #dot_df_usa <- dot_df[which(as.character(dot_df$Type) == 'College'),]
